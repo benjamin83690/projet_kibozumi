@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+// use Symfony\Component\HttpFoundation\File\File;
+// use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CreditRepository")
@@ -75,12 +77,12 @@ class Credit
         return $this;
     }
 
-    public function getMensualites(): ?int
+    public function getMensualites(): ?float
     {
         return $this->mensualites;
     }
 
-    public function setMensualites(int $mensualites): self
+    public function setMensualites(float $mensualites): self
     {
         $this->mensualites = $mensualites;
 

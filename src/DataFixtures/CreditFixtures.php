@@ -11,10 +11,30 @@ class CreditFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $credit = new Credit();
-        $credit->addUser($this->getReference(UserFixtures::USER));
+        $credit1 = new Credit();
+        $credit1->addUser($this->getReference(UserFixtures::USER))
+                ->setTitre('Prêt personnel')
+                ->setMensualites(346.19)
+                ->setNombresMensualites(30)
+                ->setTauxFixe(2.950)
+                ->setMontantEmprunte(10000)
+                ->setMontantTotal(10385.70)
+        ;
 
-        $manager->persist($credit);
+        $manager->persist($credit1);
+
+
+        $credit2 = new Credit();
+        $credit2->addUser($this->getReference(UserFixtures::USER))
+                ->setTitre('Prêt maison')
+                ->setMensualites(153.09)
+                ->setNombresMensualites(78)
+                ->setTauxFixe(5.566)
+                ->setMontantEmprunte(10000)
+                ->setMontantTotal(11941.02)
+        ;
+
+        $manager->persist($credit2);
         $manager->flush();
     }
 
