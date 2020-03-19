@@ -7,6 +7,7 @@ use App\Repository\CreditRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends AbstractController
 {
@@ -35,5 +36,16 @@ class HomeController extends AbstractController
         return $this->render('home/menu.html.twig', [
             'credits' => $credit->findAll(),
         ]);
+    }
+
+    /**
+    * @Route("/ajax/{id}", name="ajax", methods={"GET"})
+    */
+    public function ajax(Request $request, Credit $credit)
+    {
+        $montant = $request->query->get('montant');
+        $data = ['montantEmprunte'=> $montant];
+        $data['mensualites'] = $credit->getNewMensualites($montant);
+        return $this->json($data);
     }
 }
