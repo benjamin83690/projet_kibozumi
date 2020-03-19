@@ -175,7 +175,7 @@ class Credit
         * @Vich\UploadableField(mapping="credits_image", fileNameProperty="imageName")
         * @Assert\Image(
         * mimeTypesMessage = "choisir une image"
-        * maxSizeMessage = "fichier trop lourd"
+        
         * )
         * 
         * @var File|null
