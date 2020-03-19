@@ -29,4 +29,11 @@ class HomeController extends AbstractController
             'credit' => $credit,
         ]);
     }
+
+    public function menu(CreditRepository $credit)
+    {
+        return $this->render('home/menu.html.twig', [
+            'credits' => $credit->findAll(),
+        ]);
+    }
 }
