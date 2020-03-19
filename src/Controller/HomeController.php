@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Credit;
 use App\Repository\CreditRepository;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -20,7 +21,7 @@ class HomeController extends AbstractController
     }
 
     /**
-    * @Route("/credit/{id}", name="credit")
+    * @Route("/credit/{id<\d+>}", name="home_credit", methods={"GET"})
     */
     public function credit(Credit $credit)
     {
@@ -28,5 +29,4 @@ class HomeController extends AbstractController
             'credit' => $credit,
         ]);
     }
-
 }
