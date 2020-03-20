@@ -7,21 +7,101 @@
 <div>
     <div class="container">
         <div class="row">
-            <div class="jumbotron col-md-7 m-auto shadow">
-                <h2 class="text-center">Votre simulation</h2>
+            <div class="jumbotron col-md-4 m-auto shadow">
+                <h4 class="text-center">Votre simulation de {{ credit.titre }} :</h2>
                 <div class="card flex-row justify-content-around p-4">
-                    {% for cred in credit %}
-                        <a href="">
-                            <div class="credit border border-primary text-center p-4">
-                                <img src="https://via.placeholder.com/90" alt="logo" class="shadow-sm">
-                                <p> {{ cred.titre }} </p>
-                            </div>
-                        </a>
-                    {% endfor %}
+                    <div class="form-group">
+                        <label for="">Montant du prêt :</label>
+                        <input type="number" name="montant" id="montant" class="form-control" value="{{ credit.montantEmprunte }}">
+                    </div>
+                    <button type="button" id="send">Ok</button>
                 </div>
+            </div>
+            <div class="col-md-8">
+                <table class="table table-striped">
+                    <thead class="bg-success">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">
+                                Formule 1
+                                <br>
+                                <button class="btn btn-primary rounded">Choisir</button>
+                            </th>
+                            {# <th scope="col">
+                                Formule 2
+                                <br>
+                                <button class="btn btn-primary rounded">Choisir</button>
+                            </th>
+                            <th scope="col">
+                                Formule 3
+                                <br>
+                                <button class="btn btn-primary rounded">Choisir</button>
+                            </th> #}
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <th scope="row">Montant ermprunté</th>
+                                <td id="montantEmprunte">{{ credit.montantEmprunte }}</td>
+                                {# <td>{{ credit.montantEmprunte }}</td>
+                                <td>{{ credit.montantEmprunte }}</td> #}
+                            </tr>
+                        <tr>
+                            <th scope="row">Mensualité</th>
+                            <td id="mensualites">{{ credit.mensualites }}</td>
+                            {# <td>{{ credit.mensualites }}</td>
+                            <td>{{ credit.mensualites }}</td> #}
+                        </tr>
+                        <tr>
+                            <th scope="row">Nombres Mensualité</th>
+                            <td>{{ credit.nombresMensualites }}</td>
+                            {# <td>{{ credit.nombresMensualites }}</td>
+                            <td>{{ credit.nombresMensualites }}</td> #}
+                        </tr>
+                        <tr>
+                            <th scope="row">Taux Fixe</th>
+                            <td>{{ credit.tauxFixe }}</td>
+                            {# <td>{{ credit.tauxFixe }}</td>
+                            <td>{{ credit.tauxFixe }}</td> #}
+                        </tr>
+                        <tr>
+                            <th scope="row">Montant Total</th>
+                            <td>{{ credit.nombresMensualites * credit.mensualites }}</td>
+                            {# <td>{{ credit.montantTotal }}</td>
+                            <td>{{ credit.montantTotal }}</td> #}
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
 </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $('#send').click(function() {
+            $(this).prop('disabled', true);
+            $(this).after('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');
+            $.ajax({
+                data: {
+                    montant: $('#montant').val()
+                },
+                url: '{{path("ajax", {id: credit.id})}}',
+                dataType: 'json',
+                complete: function() {
+                    $('#send').prop('disabled', false);
+                    $('#send').next().remove(); 
+                },
+                error: function () {
+                    alert('Desole erreur');
+                },
+                success: function (data) {
+                    console.log(data);
+                    $('#montantEmprunte').html(data.montantEmprunte);
+                    $('#mensualites').html(data.mensualites);
+                }
+            });
+        });
+    </script>
 {% endblock %}

@@ -231,4 +231,11 @@ class Credit
         {
             return $this->imageName;
         }
+
+                /////////////////////////////////
+
+        public function getNewMensualites($montant)
+        {
+           return $this->mensualites * $montant;
+        }
 }
