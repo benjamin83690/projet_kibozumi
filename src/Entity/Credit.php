@@ -238,4 +238,9 @@ class Credit
         {
            return $this->mensualites * $montant;
         }
+
+        // public function getNewMontantTotal($montant, $taux)
+        // {
+        //    return $this->MontantTotal= ($montant * $taux)+ $montant;
+        // }
 }
