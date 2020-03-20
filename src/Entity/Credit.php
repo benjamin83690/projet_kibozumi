@@ -234,8 +234,19 @@ class Credit
 
                 /////////////////////////////////
 
-        public function getNewMensualites($montant)
-        {
-           return $this->mensualites * $montant;
-        }
+                public function getNewMensualites($montant)
+                {
+                    $taux= 0.0295;
+                    $nombresMensualites=30;
+                    $a=$montant * $taux;
+                    return $this->mensualites=($a + $montant)/$nombresMensualites;
+                
+                }
+                public function getNewMontantTotal($montant)
+                {
+                    $taux= 0.0295;
+                    $a=$montant * $taux;
+                    return $this->montantTotal=($a + $montant);
+                
+                }
 }
