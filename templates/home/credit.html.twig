@@ -25,7 +25,11 @@
                             <th scope="col">
                                 Formule 1
                                 <br>
-                                <button class="btn btn-primary rounded">Choisir</button>
+                                {% if is_granted('ROLE_USER') %}
+                                <a class="btn btn-primary rounded text-light">Choisir</a>
+                                {% else %}
+                                <a class="btn btn-primary rounded" href="{{ path('app_login') }}">Choisir</a>
+                                {% endif %}
                             </th>
                             {# <th scope="col">
                                 Formule 2
@@ -91,7 +95,7 @@
                 dataType: 'json',
                 complete: function() {
                     $('#send').prop('disabled', false);
-                    $('#send').next().remove(); 
+                    $('#send').next().remove();
                 },
                 error: function () {
                     alert('Desole erreur');

@@ -20,12 +20,18 @@
                         <a class="nav-link" href="{{ url('home') }}">Accueil</a>
                     </li>
                     {{ render(controller('App\\Controller\\HomeController::menu')) }}
+                    {% if is_granted('ROLE_USER') %}
                     <li class="nav-item">
-                        <a href="#" class="nav-link btn btn-info">connexion</a>
+                        <a href="{{ path('app_logout') }}" class="nav-link btn btn-primary">Deconnexion</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="{{ path('app_login') }}" class="nav-link btn btn-info">connexion</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link btn btn-primary">inscription</a>
+                        <a href="{{ path('app_signin') }}" class="nav-link btn btn-primary">inscription</a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
