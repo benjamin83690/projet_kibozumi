@@ -170,7 +170,7 @@ class Credit
     }
 
     /**
-<<<<<<< HEAD
+
         * NOTE: This is not a mapped field of entity metadata, just a simple property.
         * 
         * @Vich\UploadableField(mapping="credits_image", fileNameProperty="imageName")
@@ -217,7 +217,7 @@ class Credit
                 $this->updatedAt = new \DateTimeImmutable();
             }
         }
-=======
+
     * NOTE: This is not a mapped field of entity metadata, just a simple property.
     * 
     * @Vich\UploadableField(mapping="credits_image", fileNameProperty="imageName")
@@ -229,7 +229,7 @@ class Credit
     * @var File|null
     */
     private $imageFile;
->>>>>>> master
+
 
     /**
     * @ORM\Column(type="string", nullable = true)

@@ -46,13 +46,11 @@ class HomeController extends AbstractController
         $montant = $request->query->get('montant');
         $data = ['montantEmprunte'=> $montant];
         $data['mensualites'] = $credit->getNewMensualites($montant);
-<<<<<<< HEAD
-        // $data['tauxfixe'] = $credit->getNewTauxFixe($taux);
-        // $data['montanttotal'] = $credit->getNewMontantTotal($taux);
+         $data['tauxfixe'] = $credit->getNewTauxFixe($taux);
+        $data['montanttotal'] = $credit->getNewMontantTotal($taux);
 
-=======
         $data['montantTotal'] = $credit->getNewMontantTotal($montant);
->>>>>>> master
+
         return $this->json($data);
     }
 }
