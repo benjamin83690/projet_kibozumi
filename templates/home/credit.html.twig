@@ -50,7 +50,7 @@
                                 <td>{{ credit.montantEmprunte }}</td>
                                 <td>{{ credit.montantEmprunte }}</td> #}
                                 {% for credit in credits %}
-                                    <td id="montantEmprunte{{credit.id}}">{{ credit.montantEmprunte }}</td>
+                                    <td class="montantEmprunte">{{ credit.montantEmprunte }}</td>
                                 {% endfor %}
                             </tr>
                         <tr>
@@ -59,7 +59,7 @@
                             <td>{{ credit.mensualites }}</td>
                             <td>{{ credit.mensualites }}</td> #}
                             {% for credit in credits %}
-                                <td id="mensualites{{credit.id}}">{{ credit.mensualites }}</td>
+                                <td class="mensualites">{{ credit.mensualites }}</td>
                             {% endfor %}
                         </tr>
                         <tr>
@@ -68,7 +68,7 @@
                             <td>{{ credit.nombresMensualites }}</td>
                             <td>{{ credit.nombresMensualites }}</td> #}
                             {% for credit in credits %}
-                                <td id="nbrMensualites{{ credit.id }}">{{ credit.nombresMensualites }}</td>
+                                <td class="nbrMensualites">{{ credit.nombresMensualites }}</td>
                             {% endfor %}
                         </tr>
                         <tr>
@@ -77,7 +77,7 @@
                             <td>{{ credit.tauxFixe }}</td>
                             <td>{{ credit.tauxFixe }}</td> #}
                             {% for credit in credits %}
-                                <td id="taux{{ credit.id }}">{{ credit.tauxFixe }}</td>
+                                <td class="taux">{{ credit.tauxFixe }}</td>
                             {% endfor %}
                         </tr>
                         <tr>
@@ -86,7 +86,7 @@
                             <td>{{ credit.montantTotal }}</td>
                             <td>{{ credit.montantTotal }}</td> #}
                             {% for credit in credits %}
-                                <td id="montantTotal{{credit.id}}">{{ credit.montantTotal }}</td>
+                                <td class="montantTotal">{{ credit.montantTotal }}</td>
                             {% endfor %}
                         </tr>
                     </tbody>
@@ -99,42 +99,54 @@
 {% endblock %}
 {% block javascripts %}
     <script>
-        $('#send').click(function() {
-            $(this).prop('disabled', true);
-            // $(this).addClass('disabled');
-            $(this).after('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');
-            $.ajax({
-                data: {
-                    montant: $('#montant').val(),
-                    taux: $('#taux{{ credit.id }}').html(),
-                    nbrMensualites: $('#nbrMensualites{{ credit.id }}').html()
-                },
-                url: '{{path("ajax", {id: credit.id})}}',
-                dataType: 'json',
-                complete: function() {
-                    $('#send').prop('disabled', false);
-                    $('#send').next().remove();
-                },
-                error: function () {
-                    alert('Desole erreur');
-                },
-                success: function (data) {
-                    console.log(data);
-                    {% for credit in credits %}
-                    $('#montantEmprunte{{credit.id}}').html(data.montantEmprunte);
-                    $('#mensualites{{credit.id}}').html(data.mensualites);
-                    $('#montantTotal{{credit.id}}').html(data.montantTotal);
-                    {% endfor %}
-                }
-            });
-        });
+        // $('#send').click(function() {
+        //     $(this).prop('disabled', true);
+        //     // $(this).addClass('disabled');
+        //     $(this).after('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');
+        //     $.ajax({
+        //         data: {
+        //             montant: $('#montant').val(),
+        //             taux: $('#taux{{ credit.id }}').html(),
+        //             nbrMensualites: $('#nbrMensualites{{ credit.id }}').html()
+        //         },
+        //         url: '{{path("ajax", {id: credit.id})}}',
+        //         dataType: 'json',
+        //         complete: function() {
+        //             $('#send').prop('disabled', false);
+        //             $('#send').next().remove();
+        //         },
+        //         error: function () {
+        //             alert('Desole erreur');
+        //         },
+        //         success: function (data) {
+        //             console.log(data);
+        //             {% for credit in credits %}
+        //             $('#montantEmprunte{{credit.id}}').html(data.montantEmprunte);
+        //             $('#mensualites{{credit.id}}').html(data.mensualites);
+        //             $('#montantTotal{{credit.id}}').html(data.montantTotal);
+        //             {% endfor %}
+        //         }
+        //     });
+        // });
         // {% for credit in credits %}
         //     $('#montantEmprunte{{credit.id}}').html(data.montantEmprunte);
         //     $('#mensualites{{credit.id}}').html(data.mensualites);
         //     $('#montantTotal{{credit.id}}').html(data.montantTotal);
         // {% endfor %}
 
-        // var a = $('#montant').val() * 
+        $('#send').click(()=> {
+            for (let i = 0; i < $('.montantTotal').length; i++) {
+                const montant = parseInt($('#montant').val())
+                const taux = parseFloat($('.taux')[i].innerHTML);
+                const nbrMensualites = parseInt($('.nbrMensualites')[i].innerHTML);
+                const total = (montant * taux) + montant;
+                const mensualites = total / nbrMensualites;
 
+                $('.mensualites')[i].innerHTML = mensualites;
+                $('.montantTotal')[i].innerHTML = total;
+                $('.montantEmprunte')[i].innerHTML = montant;
+            }
+
+        })
     </script>
 {% endblock %}
