@@ -134,6 +134,13 @@
         //     $('#montantTotal{{credit.id}}').html(data.montantTotal);
         // {% endfor %}
 
+        function arrondir(nombre) {
+            let arrondi = nombre*100;          
+            arrondi = Math.round(arrondi); 
+            arrondi = arrondi/100;
+            return arrondi;
+        }
+
         $('#send').click(()=> {
             for (let i = 0; i < $('.montantTotal').length; i++) {
                 const montant = parseInt($('#montant').val())
@@ -142,7 +149,7 @@
                 const total = (montant * taux) + montant;
                 const mensualites = total / nbrMensualites;
 
-                $('.mensualites')[i].innerHTML = mensualites;
+                $('.mensualites')[i].innerHTML = arrondir(mensualites);
                 $('.montantTotal')[i].innerHTML = total;
                 $('.montantEmprunte')[i].innerHTML = montant;
             }
