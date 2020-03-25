@@ -231,18 +231,5 @@ class Credit
     {
         return $this->imageName;
     }
-
-    /////////////////////////////////
-
-    public function getNewMensualites($montant, $taux, $nbrMensualites)
-    {
-        $a=$montant * $taux;
-        return $this->mensualites=($a + $montant)/$nbrMensualites;
-    }
-    
-    public function getNewMontantTotal($montant, $taux)
-    {
-        $a=$montant * $taux;
-        return $this->montantTotal=($a + $montant);
-    }
+ 
 }

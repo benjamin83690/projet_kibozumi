@@ -46,45 +46,30 @@
                     <tbody>
                             <tr>
                                 <th scope="row">Montant emprunté</th>
-                                {# <td id="montantEmprunte">{{ credit.montantEmprunte }}</td>
-                                <td>{{ credit.montantEmprunte }}</td>
-                                <td>{{ credit.montantEmprunte }}</td> #}
                                 {% for credit in credits %}
                                     <td class="montantEmprunte">{{ credit.montantEmprunte }}</td>
                                 {% endfor %}
                             </tr>
                         <tr>
                             <th scope="row">Mensualité</th>
-                            {# <td id="mensualites">{{ credit.mensualites }}</td>
-                            <td>{{ credit.mensualites }}</td>
-                            <td>{{ credit.mensualites }}</td> #}
                             {% for credit in credits %}
                                 <td class="mensualites">{{ credit.mensualites }}</td>
                             {% endfor %}
                         </tr>
                         <tr>
                             <th scope="row">Nombres Mensualité</th>
-                            {# <td>{{ credit.nombresMensualites }}</td>
-                            <td>{{ credit.nombresMensualites }}</td>
-                            <td>{{ credit.nombresMensualites }}</td> #}
                             {% for credit in credits %}
                                 <td class="nbrMensualites">{{ credit.nombresMensualites }}</td>
                             {% endfor %}
                         </tr>
                         <tr>
                             <th scope="row">Taux Fixe</th>
-                            {# <td>{{ credit.tauxFixe }}</td>
-                            <td>{{ credit.tauxFixe }}</td>
-                            <td>{{ credit.tauxFixe }}</td> #}
                             {% for credit in credits %}
                                 <td class="taux">{{ credit.tauxFixe }}</td>
                             {% endfor %}
                         </tr>
                         <tr>
                             <th scope="row">Montant Total</th>
-                            {# <td id="montantTotal">{{ credit.montantTotal }}</td>
-                            <td>{{ credit.montantTotal }}</td>
-                            <td>{{ credit.montantTotal }}</td> #}
                             {% for credit in credits %}
                                 <td class="montantTotal">{{ credit.montantTotal }}</td>
                             {% endfor %}
@@ -99,41 +84,7 @@
 {% endblock %}
 {% block javascripts %}
     <script>
-        // $('#send').click(function() {
-        //     $(this).prop('disabled', true);
-        //     // $(this).addClass('disabled');
-        //     $(this).after('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');
-        //     $.ajax({
-        //         data: {
-        //             montant: $('#montant').val(),
-        //             taux: $('#taux{{ credit.id }}').html(),
-        //             nbrMensualites: $('#nbrMensualites{{ credit.id }}').html()
-        //         },
-        //         url: '{{path("ajax", {id: credit.id})}}',
-        //         dataType: 'json',
-        //         complete: function() {
-        //             $('#send').prop('disabled', false);
-        //             $('#send').next().remove();
-        //         },
-        //         error: function () {
-        //             alert('Desole erreur');
-        //         },
-        //         success: function (data) {
-        //             console.log(data);
-        //             {% for credit in credits %}
-        //             $('#montantEmprunte{{credit.id}}').html(data.montantEmprunte);
-        //             $('#mensualites{{credit.id}}').html(data.mensualites);
-        //             $('#montantTotal{{credit.id}}').html(data.montantTotal);
-        //             {% endfor %}
-        //         }
-        //     });
-        // });
-        // {% for credit in credits %}
-        //     $('#montantEmprunte{{credit.id}}').html(data.montantEmprunte);
-        //     $('#mensualites{{credit.id}}').html(data.mensualites);
-        //     $('#montantTotal{{credit.id}}').html(data.montantTotal);
-        // {% endfor %}
-
+        
         function arrondir(nombre) {
             let arrondi = nombre*100;          
             arrondi = Math.round(arrondi); 
