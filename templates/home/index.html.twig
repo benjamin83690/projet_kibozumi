@@ -12,7 +12,7 @@
                 <div class="card flex-row justify-content-around p-4">
                     {% for credit in userCredit %}
                         <a href="credit/{{ credit.id }}">
-                            <div class="credit border border-primary text-center p-4">
+                            <div class="credit text-center p-4">
                                 <img src="https://via.placeholder.com/90" alt="logo" class="shadow-sm">
                                 <p> {{ credit.titre }} </p>
                                 {% if is_granted('ROLE_ADMIN') %}

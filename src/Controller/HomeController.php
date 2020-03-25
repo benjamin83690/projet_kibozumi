@@ -38,6 +38,7 @@ class HomeController extends AbstractController
             'credits' => $credit->findAll(),
         ]);
     }
+<<<<<<< HEAD
 
     /**
     * @Route("/ajax/{id}", name="ajax", methods={"GET"})
@@ -61,4 +62,6 @@ class HomeController extends AbstractController
 >>>>>>> master
         return $this->json($data);
     }
+=======
+>>>>>>> dev
 }

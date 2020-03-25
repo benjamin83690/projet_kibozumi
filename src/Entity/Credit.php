@@ -291,6 +291,7 @@ class Credit
     {
         return $this->imageName;
     }
+<<<<<<< HEAD
 
     /////////////////////////////////
 
@@ -306,4 +307,6 @@ class Credit
         return $this->montantTotal=($a + $montant);
     }
 >>>>>>> master
+=======
+>>>>>>> dev
 }
