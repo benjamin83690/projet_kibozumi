@@ -38,18 +38,4 @@ class HomeController extends AbstractController
             'credits' => $credit->findAll(),
         ]);
     }
-
-    /**
-    * @Route("/ajax/{id}", name="ajax", methods={"GET"})
-    */
-    public function ajax(Request $request, Credit $credit)
-    {
-        $montant = $request->query->get('montant');
-        $taux = $request->query->get('taux');
-        $nbrMensualites = $request->query->get('nbrMensualites');
-        $data = ['montantEmprunte'=> $montant];
-        $data['mensualites'] = $credit->getNewMensualites($montant, $taux,$nbrMensualites);
-        $data['montantTotal'] = $credit->getNewMontantTotal($montant, $taux);
-        return $this->json($data);
-    }
 }
