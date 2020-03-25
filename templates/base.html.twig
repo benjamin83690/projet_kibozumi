@@ -29,13 +29,8 @@
                     <li class="nav-item">
                         <a href="{{ path('app_logout') }}" class="nav-link btn btn-primary">Deconnexion</a>
                     </li>
-<<<<<<< HEAD
-                     <li class="nav-item">
-                        <a href="{{ path('user_show') }}" class="nav-link btn btn-primary">Deconnexion</a>
-=======
                     <li class="nav-item">
                         <a href="{{ path('user_show', {id: app.user.id }) }}" class="nav-link btn btn-primary">Profil</a>
->>>>>>> dev
                     </li>
                     {% else %}
                     <li class="nav-item">

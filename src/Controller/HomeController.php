@@ -38,9 +38,4 @@ class HomeController extends AbstractController
             'credits' => $credit->findAll(),
         ]);
     }
-<<<<<<< HEAD
-
-    
-=======
->>>>>>> dev
 }
