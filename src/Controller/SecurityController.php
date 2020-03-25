@@ -25,9 +25,9 @@ class SecurityController extends AbstractController
             'error' => $error
         ]);
         
-        if ($this->getUser()) {
-            return $this->redirectToRoute('user_index');
-        }
+        // if ($this->getUser()) {
+        //     return $this->redirectToRoute('user_index');
+        // }
     }
 
     /**
