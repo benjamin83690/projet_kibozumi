@@ -15,10 +15,14 @@
                             <div class="credit border border-primary text-center p-4">
                                 <img src="https://via.placeholder.com/90" alt="logo" class="shadow-sm">
                                 <p> {{ credit.titre }} </p>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('credit_show', {id: credit.id}) }}" class="nav-link btn btn-info btn-sm d-inline-block">Ajouter un crédit</a>
+                                {% endif %}
                             </div>
                         </a>
                     {% endfor %}
                 </div>
+                <a href="{{ path('credit_new') }}" class="nav-link btn btn-info btn-sm d-inline-block">Ajouter un crédit</a>
             </div>
         </div>
     </div>

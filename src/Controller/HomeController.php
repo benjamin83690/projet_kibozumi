@@ -24,10 +24,11 @@ class HomeController extends AbstractController
     /**
     * @Route("/credit/{id<\d+>}", name="home_credit", methods={"GET"})
     */
-    public function credit(Credit $credit)
+    public function credit(Credit $credit, CreditRepository $credits)
     {
         return $this->render('home/credit.html.twig', [
             'credit' => $credit,
+            'credits' => $credits->findAll()
         ]);
     }
 
@@ -44,13 +45,20 @@ class HomeController extends AbstractController
     public function ajax(Request $request, Credit $credit)
     {
         $montant = $request->query->get('montant');
+        $taux = $request->query->get('taux');
+        $nbrMensualites = $request->query->get('nbrMensualites');
         $data = ['montantEmprunte'=> $montant];
+<<<<<<< HEAD
         $data['mensualites'] = $credit->getNewMensualites($montant);
          $data['tauxfixe'] = $credit->getNewTauxFixe($taux);
         $data['montanttotal'] = $credit->getNewMontantTotal($taux);
 
         $data['montantTotal'] = $credit->getNewMontantTotal($montant);
 
+=======
+        $data['mensualites'] = $credit->getNewMensualites($montant, $taux,$nbrMensualites);
+        $data['montantTotal'] = $credit->getNewMontantTotal($montant, $taux);
+>>>>>>> master
         return $this->json($data);
     }
 }

@@ -20,6 +20,11 @@
                         <a class="nav-link" href="{{ url('home') }}">Accueil</a>
                     </li>
                     {{ render(controller('App\\Controller\\HomeController::menu')) }}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a href="{{ path('admin_new') }}" class="nav-link btn btn-primary">inscrire un admin</a>
+                        </li>
+                    {% endif %}
                     {% if is_granted('ROLE_USER') %}
                     <li class="nav-item">
                         <a href="{{ path('app_logout') }}" class="nav-link btn btn-primary">Deconnexion</a>

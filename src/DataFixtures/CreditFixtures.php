@@ -14,11 +14,11 @@ class CreditFixtures extends Fixture implements DependentFixtureInterface
         $credit1 = new Credit();
         $credit1->addUser($this->getReference(UserFixtures::USER))
                 ->setTitre('Prêt personnel')
-                ->setMensualites(346.19)
+                ->setMensualites(343.17)
                 ->setNombresMensualites(30)
-                ->setTauxFixe(2.950)
+                ->setTauxFixe(0.0295)
                 ->setMontantEmprunte(10000)
-                ->setMontantTotal(10385.70)
+                ->setMontantTotal(10295)
         ;
 
         $manager->persist($credit1);
@@ -27,11 +27,11 @@ class CreditFixtures extends Fixture implements DependentFixtureInterface
         $credit2 = new Credit();
         $credit2->addUser($this->getReference(UserFixtures::USER))
                 ->setTitre('Prêt maison')
-                ->setMensualites(153.09)
+                ->setMensualites(135.33)
                 ->setNombresMensualites(78)
-                ->setTauxFixe(5.566)
+                ->setTauxFixe(0.0556)
                 ->setMontantEmprunte(10000)
-                ->setMontantTotal(11941.02)
+                ->setMontantTotal(10556)
         ;
 
         $manager->persist($credit2);
