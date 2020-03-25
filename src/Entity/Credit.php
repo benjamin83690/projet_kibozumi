@@ -231,5 +231,8 @@ class Credit
     {
         return $this->imageName;
     }
+<<<<<<< HEAD
  
+=======
+>>>>>>> dev
 }
