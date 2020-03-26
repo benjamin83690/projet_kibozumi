@@ -4,8 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Credit;
 use App\Entity\Commande;
-use App\Repository\CommandeRepository;
+use App\Entity\User;
 use App\Repository\CreditRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,32 +43,28 @@ class HomeController extends AbstractController
     }
 
     /**
-    * @Route("/ajax/{id}", name="ajax", methods={"GET"})
+    * @Route("/ajax/{id}/{user}", name="ajax", methods={"GET"})
     */
-    public function ajax(Request $request): Response
+    public function ajax(Request $request, Credit $credit, User $user): Response
     {
         $montant = $request->query->get('montant');
         $mensualites = $request->query->get('mensualites');
         $montantTotal = $request->query->get('montantTotal');
-        $creditId = $request->query->get('creditId');
-        $userId = $request->query->get('userId');
         $data = [
-            'montantEmprunte'=> $montant,
-            'mensualites'=>$mensualites,
-            'montantTotal'=>$montantTotal,
-            'creditId'=>$creditId,
-            'userId' => $userId
+            'montantEmprunte'=> intval($montant),
+            'mensualites'=> floatval($mensualites),
+            'montantTotal'=> floatval($montantTotal),
         ];
-        return $this->json($data);
         $commande = new Commande();
         $entityManager = $this->getDoctrine()->getManager();
         $commande->setMontantEmprunte($montant)
                  ->setMontantTotal($montantTotal)
                  ->setMensualites($mensualites)
-                 ->setUserCommande($userId)
-                 ->setCreditCommande($creditId)
+                 ->setUserCommande($user)
+                 ->setCreditCommande($credit)
         ;
         $entityManager->persist($commande);
         $entityManager->flush();
+        return $this->json($data);
     }
 }

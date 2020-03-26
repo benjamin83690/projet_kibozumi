@@ -5,6 +5,7 @@
 {% block body %}
 
 <div>
+        {{ dump(app.user) }}
     <div class="container">
         <div class="row">
             <div class="jumbotron col-md-4 m-auto shadow">
@@ -102,10 +103,8 @@
                     montant: $('#montant').val(),
                     mensualites : $('#mensualites' + e.target.getAttribute('id'))[0].innerHTML,
                     montantTotal: $('#montantTotal'+ e.target.getAttribute('id'))[0].innerHTML,
-                    userId: {{ app.user.id }},
-                    creditId: e.target.getAttribute('id'),
                 },
-                url: '{{path("ajax", {id: credit.id})}}',
+                url: '{{path("ajax", {id: credit.id, user: app.user.id})}}',
                 dataType: 'json',
                 complete: function() {
                     // $('#send').prop('disabled', false);
