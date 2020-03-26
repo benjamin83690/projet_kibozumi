@@ -1,8 +1,8 @@
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Nos prêts </a>
     <div class="dropdown-menu" style="">
-    {% for categorie in categories %}
-        <a class="dropdown-item" href="{{ url('category_show', {id: categorie.id}) }}"> {{ categorie.titre }}</a>
+    {% for credit in credits %}
+        <a class="dropdown-item" href="{{ url('home_credit', {id: credit.id}) }}"> {{ credit.titre }}</a>
     {% endfor %}
     </div>
 </li>

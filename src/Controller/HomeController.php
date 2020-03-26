@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Entity\Credit;
+<<<<<<< HEAD
 use App\Entity\Commande;
 use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
+=======
+use App\Repository\CreditRepository;
+>>>>>>> parent of ea2d83a... ajout test route category
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,28 +19,28 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(CategoryRepository $category)
+    public function index(CreditRepository $credit)
     {
         return $this->render('home/index.html.twig', [
-            'categories' => $category->findAll(),
+            'userCredit' => $credit->findAll(),
         ]);
     }
 
-    // /**
-    // * @Route("/credit/{id<\d+>}", name="home_credit", methods={"GET"})
-    // */
-    // public function credit(Credit $credit, CreditRepository $credits)
-    // {
-    //     return $this->render('home/credit.html.twig', [
-    //         'credit' => $credit,
-    //         'credits' => $credits->findAll()
-    //     ]);
-    // }
+    /**
+    * @Route("/credit/{id<\d+>}", name="home_credit", methods={"GET"})
+    */
+    public function credit(Credit $credit, CreditRepository $credits)
+    {
+        return $this->render('home/credit.html.twig', [
+            'credit' => $credit,
+            'credits' => $credits->findAll()
+        ]);
+    }
 
-    public function menu(CategoryRepository $category)
+    public function menu(CreditRepository $credit)
     {
         return $this->render('home/menu.html.twig', [
-            'categories' => $category->findAll(),
+            'credits' => $credit->findAll(),
         ]);
     }
 }

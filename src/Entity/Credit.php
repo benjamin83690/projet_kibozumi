@@ -20,8 +20,6 @@ class Credit
     {
         $this->updatedAt = new \DateTime();
         $this->users = new ArrayCollection();
-        $this->creditCategory = new ArrayCollection();
-        $this->categories = new ArrayCollection();
     }
 
     /**
@@ -30,6 +28,11 @@ class Credit
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $titre;
 
     /**
      * @ORM\Column(type="integer")
@@ -64,6 +67,18 @@ class Credit
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
+
+        return $this;
     }
 
     public function getMensualites(): ?float
@@ -183,6 +198,7 @@ class Credit
     private $updatedAt;
 
     /**
+<<<<<<< HEAD
      * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="creditCommande", cascade={"persist", "remove"})
      */
     private $commande;
@@ -194,6 +210,8 @@ class Credit
     private $creditCategory;
 
     /**
+=======
+>>>>>>> parent of ea2d83a... ajout test route category
     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
     * of 'UploadedFile' is injected into this setter to trigger the update. If this
     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -227,6 +245,7 @@ class Credit
     {
         return $this->imageName;
     }
+<<<<<<< HEAD
 
     public function getCommande(): ?Commande
     {
@@ -256,4 +275,6 @@ class Credit
 
         return $this;
     }
+=======
+>>>>>>> parent of ea2d83a... ajout test route category
 }
