@@ -2,14 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Credit;
 use App\Entity\Category;
 use App\Form\CategoryType;
-use App\Repository\CategoryRepository;
 use App\Repository\CreditRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * @Route("/category")
@@ -52,11 +54,11 @@ class CategoryController extends AbstractController
     /**
      * @Route("/{id}", name="category_show", methods={"GET"})
      */
-    public function show(Category $category, CreditRepository $credit): Response
+    public function show(Category $category, CreditRepository $credits): Response
     {
         return $this->render('category/show.html.twig', [
             'category' => $category,
-            'credits' => $credit->findByCategory($category->getId())
+            'credits' => $credits->findByCategory($category->getId()),
         ]);
     }
 

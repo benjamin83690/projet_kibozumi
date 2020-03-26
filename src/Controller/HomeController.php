@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\User;
 use App\Entity\Credit;
 use App\Repository\CategoryRepository;
@@ -44,17 +45,20 @@ class HomeController extends AbstractController
     }
 
     /**
-    * @Route("/ajax/{id}/{user}", name="ajax", methods={"GET"})
+    * @Route("/ajax/{user}", name="ajax", methods={"GET"})
     */
-    public function ajax(Request $request, Credit $credit, User $user): Response
+    public function ajax(Request $request, User $user ): Response
     {
         $montant = $request->query->get('montant');
         $mensualites = $request->query->get('mensualites');
         $montantTotal = $request->query->get('montantTotal');
+        $creditId = $request->query->get('creditId');
+        
         $data = [
             'montantEmprunte'=> intval($montant),
             'mensualites'=> floatval($mensualites),
             'montantTotal'=> floatval($montantTotal),
+            'creditId'=> intval($creditId)
         ];
         $commande = new Commande();
         $entityManager = $this->getDoctrine()->getManager();
@@ -62,7 +66,7 @@ class HomeController extends AbstractController
                  ->setMontantTotal($montantTotal)
                  ->setMensualites($mensualites)
                  ->setUserCommande($user)
-                 ->setCreditCommande($credit)
+                //  ->setCreditCommande()
         ;
         $entityManager->persist($commande);
         $entityManager->flush();
