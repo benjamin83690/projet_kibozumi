@@ -198,7 +198,7 @@ class Credit
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Commande", mappedBy="creditCommande", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="creditCommande", cascade={"persist", "remove"})
      */
     private $commande;
 
