@@ -3,13 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Credit;
-<<<<<<< HEAD
-use App\Entity\Commande;
-use App\Repository\CategoryRepository;
-use Symfony\Component\HttpFoundation\Request;
-=======
 use App\Repository\CreditRepository;
->>>>>>> parent of ea2d83a... ajout test route category
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
