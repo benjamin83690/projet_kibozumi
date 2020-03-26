@@ -198,6 +198,11 @@ class Credit
     private $updatedAt;
 
     /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Commande", mappedBy="creditCommande", cascade={"persist", "remove"})
+     */
+    private $commande;
+
+    /**
     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
     * of 'UploadedFile' is injected into this setter to trigger the update. If this
     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -230,5 +235,22 @@ class Credit
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    public function getCommande(): ?Commande
+    {
+        return $this->commande;
+    }
+
+    public function setCommande(Commande $commande): self
+    {
+        $this->commande = $commande;
+
+        // set the owning side of the relation if necessary
+        if ($commande->getCreditCommande() !== $this) {
+            $commande->setCreditCommande($this);
+        }
+
+        return $this;
     }
 }
