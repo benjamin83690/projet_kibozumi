@@ -14,9 +14,9 @@ class CreditType extends AbstractType
     {
         $builder
             ->add('titre')
+            ->add('montantEmprunte')
             ->add('mensualites')
             ->add('nombresMensualites')
-            ->add('montantEmprunte')
             ->add('tauxFixe')
             ->add('montantTotal')
             // ->add('users')
