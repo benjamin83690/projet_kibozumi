@@ -28,7 +28,7 @@ class CreditFixtures extends Fixture implements DependentFixtureInterface
                 ->setNombresMensualites(24)
                 ->setTauxFixe(0.0556)
                 ->setMontantEmprunte(10000)
-                ->setMontantTotal(10556)
+                ->setMontantTotal(10560)
         ;
         $manager->persist($credit2);
 

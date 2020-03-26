@@ -183,20 +183,21 @@ class Credit
     private $updatedAt;
 
     /**
-<<<<<<< HEAD
-=======
+
+
      * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="creditCommande", cascade={"persist", "remove"})
      */
     private $commande;
 
     /**
+
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="credits")
      * @ORM\JoinColumn(nullable=false)
      */
     private $creditCategory;
 
     /**
->>>>>>> parent of 03620f0... retour commit
+
     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
     * of 'UploadedFile' is injected into this setter to trigger the update. If this
     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -230,8 +231,6 @@ class Credit
     {
         return $this->imageName;
     }
-<<<<<<< HEAD
-=======
 
     public function getCommande(): ?Commande
     {
@@ -250,6 +249,7 @@ class Credit
         return $this;
     }
 
+
     public function getCreditCategory()
     {
         return $this->creditCategory;
@@ -261,5 +261,4 @@ class Credit
 
         return $this;
     }
->>>>>>> parent of 03620f0... retour commit
 }
