@@ -4,17 +4,12 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Credit;
-<<<<<<< Updated upstream
-use App\Repository\CreditRepository;
-=======
 use App\Entity\Commande;
 use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
->>>>>>> Stashed changes
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends AbstractController
 {

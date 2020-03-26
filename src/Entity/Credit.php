@@ -183,8 +183,6 @@ class Credit
     private $updatedAt;
 
     /**
-<<<<<<< Updated upstream
-=======
      * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="creditCommande", cascade={"persist", "remove"})
      */
     private $commande;
@@ -196,7 +194,6 @@ class Credit
     private $creditCategory;
 
     /**
->>>>>>> Stashed changes
     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
     * of 'UploadedFile' is injected into this setter to trigger the update. If this
     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -230,8 +227,6 @@ class Credit
     {
         return $this->imageName;
     }
-<<<<<<< Updated upstream
-=======
 
     public function getCommande(): ?Commande
     {
@@ -261,5 +256,4 @@ class Credit
 
         return $this;
     }
->>>>>>> Stashed changes
 }
