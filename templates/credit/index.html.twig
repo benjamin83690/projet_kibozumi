@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Categorie</th>
                 <th>Mensualites</th>
                 <th>NombresMensualites</th>
                 <th>MontantEmprunte</th>
@@ -23,13 +24,14 @@
         {% for credit in credits %}
             <tr>
                 <td>{{ credit.id }}</td>
+                <td>{{ credit.creditCategory.titre }}</td>
                 <td>{{ credit.mensualites }}</td>
                 <td>{{ credit.nombresMensualites }}</td>
                 <td>{{ credit.montantEmprunte }}</td>
                 <td>{{ credit.tauxFixe }}</td>
                 <td>{{ credit.montantTotal }}</td>
                 <td>{{ credit.imageName }}</td>
-                {# <td>{{ credit.updatedAt ? credit.updatedAt|date('Y-m-d H:i:s') : '' }}</td> #}
+                <td>{{ credit.updatedAt ? credit.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('credit_show', {'id': credit.id}) }}">show</a>
                     <a href="{{ path('credit_edit', {'id': credit.id}) }}">edit</a>

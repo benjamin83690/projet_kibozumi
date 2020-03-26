@@ -18,6 +18,10 @@
         </tbody>
     </table>
 
+    <pre>
+        {{ dump(credits) }}
+    </pre>
+
     <a href="{{ path('category_index') }}">back to list</a>
 
     <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>

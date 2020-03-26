@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CreditController extends AbstractController
 {
     /**
-    * @Route("/", name="home_credit", methods={"GET"})
+    * @Route("/", name="credit_index", methods={"GET"})
     */
     public function index(CreditRepository $credits)
     {

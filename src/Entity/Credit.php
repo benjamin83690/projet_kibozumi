@@ -16,14 +16,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Credit
 {
 
-    public function __construct()
-    {
-        $this->updatedAt = new \DateTime();
-        $this->users = new ArrayCollection();
-        $this->creditCategory = new ArrayCollection();
-        $this->categories = new ArrayCollection();
-    }
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -60,6 +52,56 @@ class Credit
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="userCredit")
      */
     private $users;
+
+    /**
+    * NOTE: This is not a mapped field of entity metadata, just a simple property.
+    * 
+    * @Vich\UploadableField(mapping="credits_image", fileNameProperty="imageName")
+    * @Assert\Image(
+    * mimeTypesMessage = "choisir une image"
+    
+    * )
+    * 
+    * @var File|null
+    */
+    private $imageFile;
+
+    /**
+    * @ORM\Column(type="string", nullable = true)
+    *
+    * @var string|null
+    */
+    private $imageName;
+
+
+    /**
+    * @ORM\Column(type="datetime")
+    *
+    * @var \DateTimeInterface|null
+    */
+    public $updatedAt;
+
+    /**
+
+
+    * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="creditCommande", cascade={"persist", "remove"})
+    */
+    private $commande;
+
+    /**
+
+    * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="credits")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $creditCategory;
+
+    public function __construct()
+    {
+        $this->updatedAt = new \DateTime();
+        $this->users = new ArrayCollection();
+        $this->creditCategory = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -153,48 +195,6 @@ class Credit
 
         return $this;
     }
-
-    /**
-    * NOTE: This is not a mapped field of entity metadata, just a simple property.
-    * 
-    * @Vich\UploadableField(mapping="credits_image", fileNameProperty="imageName")
-    * @Assert\Image(
-    * mimeTypesMessage = "choisir une image"
-    
-    * )
-    * 
-    * @var File|null
-    */
-    private $imageFile;
-
-    /**
-    * @ORM\Column(type="string", nullable = true)
-    *
-    * @var string|null
-    */
-    private $imageName;
-
-
-    /**
-    * @ORM\Column(type="datetime")
-    *
-    * @var \DateTimeInterface|null
-    */
-    private $updatedAt;
-
-    /**
-
-
-     * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="creditCommande", cascade={"persist", "remove"})
-     */
-    private $commande;
-
-    /**
-
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="credits")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $creditCategory;
 
     /**
 
