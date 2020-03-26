@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user", name="user_index", methods={"GET"})
+     * @Route("/admin/user", name="user_index", methods={"GET"})
      */
     public function index(UserRepository $userRepository): Response
     {
@@ -42,6 +42,7 @@ class UserController extends AbstractController
             $entityManager->flush();
 
             return $this->redirectToRoute('user_index');
+            // return $this->redirectToRoute('user_show');
         }
 
         return $this->render('user/new.html.twig', [
