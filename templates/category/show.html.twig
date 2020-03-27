@@ -42,7 +42,10 @@
                                         Formule {{ loop.index }}
                                         <br>
                                         {% if is_granted('ROLE_USER') %}
-                                            <a class="btn btn-primary rounded data" id="{{loop.index}}">Choisir</a>
+                                            <a class="btn btn-primary rounded data" id="{{credit.id}}">Choisir</a>
+                                            <pre>
+                                                {{ dump(credit) }}
+                                            </pre>
                                         {% else %}
                                             <a class="btn btn-primary rounded" href="{{ path('app_login') }}">Choisir</a>
                                         {% endif %}
@@ -60,7 +63,7 @@
                                 <tr>
                                     <th scope="row">Mensualité</th>
                                     {% for credit in credits %}
-                                        <td class="mensualites" id="mensualites{{loop.index}}">{{ credit.mensualites }}</td>
+                                        <td class="mensualites" id="mensualites{{credit.id}}">{{ credit.mensualites }}</td>
                                     {% endfor %}
                                 </tr>
                                 <tr>
@@ -78,7 +81,7 @@
                                 <tr>
                                     <th scope="row">Montant Total</th>
                                     {% for credit in credits %}
-                                        <td class="montantTotal" id="montantTotal{{loop.index}}">{{ credit.montantTotal }}</td>
+                                        <td class="montantTotal" id="montantTotal{{credit.id}}">{{ credit.montantTotal }}</td>
                                     {% endfor %}
                                 </tr>
                             </tbody>
@@ -119,7 +122,8 @@
             }
         })
 
-        $('.data').click((e) => {
+        $('.data').click((e) => { 
+                  
             $.ajax({
                 data: {
                     montant: $('#montant').val(),
@@ -127,7 +131,9 @@
                     montantTotal: $('#montantTotal'+ e.target.getAttribute('id'))[0].innerHTML,
                     creditId: e.target.getAttribute('id')
                 },
-                url: "{{path('ajax', {user: app.user.id})}}",
+                {% for credit in credits %}
+                url: "{{path('ajax', {user: app.user.id, id: credit.id})}}",
+                {% endfor %}
                 dataType: 'json',
                 complete: function() {
                     // $('#send').prop('disabled', false);

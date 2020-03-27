@@ -45,9 +45,9 @@ class HomeController extends AbstractController
     }
 
     /**
-    * @Route("/ajax/{user}", name="ajax", methods={"GET"})
+    * @Route("/ajax/{user}/{id}", name="ajax", methods={"GET"})
     */
-    public function ajax(Request $request, User $user ): Response
+    public function ajax(Request $request, User $user, Credit $credit ): Response
     {
         $montant = $request->query->get('montant');
         $mensualites = $request->query->get('mensualites');
@@ -66,7 +66,7 @@ class HomeController extends AbstractController
                  ->setMontantTotal($montantTotal)
                  ->setMensualites($mensualites)
                  ->setUserCommande($user)
-                //  ->setCreditCommande()
+                 ->setCreditCommande($credit)
         ;
         $entityManager->persist($commande);
         $entityManager->flush();

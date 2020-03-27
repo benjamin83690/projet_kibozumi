@@ -52,7 +52,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="category_show", methods={"GET"})
+     * @Route("/{id}", name="category_show", methods={"GET", "POST"})
      */
     public function show(Category $category, CreditRepository $credits): Response
     {
