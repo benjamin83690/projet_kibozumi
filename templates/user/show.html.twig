@@ -37,6 +37,14 @@
             </tr>
         </tbody>
     </table>
+    <pre>
+        {{ dump(commandes) }}        
+    </pre>
+    {% for commande in commandes %}
+        {# {% if credit.tauxFixe == commande. %}
+        <p>{{ credit.tauxFixe }}</p> #}
+        <p>{{ commande.creditCommande.tauxFixe }}</p>
+    {% endfor %}
 
     <a href="{{ path('user_index') }}">back to list</a>
 

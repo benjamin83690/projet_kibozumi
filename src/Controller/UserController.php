@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\CommandeRepository;
+use App\Repository\CreditRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -79,10 +82,12 @@ class UserController extends AbstractController
     /**
      * @Route("/user/{id}", name="user_show", methods={"GET"})
      */
-    public function show(User $user): Response
+    public function show(User $user, CommandeRepository $commande, CreditRepository $credit): Response
     {
         return $this->render('user/show.html.twig', [
             'user' => $user,
+            'commandes' => $commande->findUserCommandByUserId($user),
+            'credits' => $credit->findAll()
         ]);
     }
 
