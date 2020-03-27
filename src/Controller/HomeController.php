@@ -50,7 +50,6 @@ class HomeController extends AbstractController
     public function ajax(Request $request, User $user, Credit $credit ): Response
     {
         $montant = $request->query->get('montant');
-<<<<<<< Updated upstream
         $mensualites = $request->query->get('mensualites');
         $montantTotal = $request->query->get('montantTotal');
         $creditId = $request->query->get('creditId');
@@ -71,13 +70,6 @@ class HomeController extends AbstractController
         ;
         $entityManager->persist($commande);
         $entityManager->flush();
-=======
-        $taux = $request->query->get('taux');
-        $nbrMensualites = $request->query->get('nbrMensualites');
-        $data = ['montantEmprunte'=> $montant];
-        $data['mensualites'] = $credit->getNewMensualites($montant, $taux,$nbrMensualites);
-        $data['montantTotal'] = $credit->getNewMontantTotal($montant, $taux);
->>>>>>> Stashed changes
         return $this->json($data);
     }
 }
