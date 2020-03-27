@@ -56,7 +56,7 @@ class User implements UserInterface
     private $userCredit;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Commande", mappedBy="userCommande", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="userCommande", cascade={"persist", "remove"})
      */
     private $commande;
 
