@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\Category;
+
 use App\Entity\User;
 use App\Entity\Credit;
-use App\Repository\CategoryRepository;
+use App\Entity\Category;
 use App\Entity\Commande;
 use App\Repository\CreditRepository;
-use App\Repository\UserRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,9 +45,20 @@ class HomeController extends AbstractController
     }
 
     /**
-    * @Route("/ajax/{user}", name="ajax", methods={"GET"})
+    * @Route("/commande/{id}", name="category_show", methods={"GET", "POST"})
     */
-    public function ajax(Request $request, User $user ): Response
+    public function show(Category $category, CreditRepository $credits): Response
+    {
+        return $this->render('category/show.html.twig', [
+            'category' => $category,
+            'credits' => $credits->findByCategory($category->getId()),
+        ]);
+    }
+
+    /**
+    * @Route("/ajax/{user}/{id}", name="ajax", methods={"GET"})
+    */
+    public function ajax(Request $request, User $user, Credit $credit )
     {
         $montant = $request->query->get('montant');
         $mensualites = $request->query->get('mensualites');
@@ -63,13 +74,15 @@ class HomeController extends AbstractController
         $commande = new Commande();
         $entityManager = $this->getDoctrine()->getManager();
         $commande->setMontantEmprunte($montant)
-                 ->setMontantTotal($montantTotal)
-                 ->setMensualites($mensualites)
-                 ->setUserCommande($user)
-                //  ->setCreditCommande()
+                ->setMontantTotal($montantTotal)
+                ->setMensualites($mensualites)
+                ->setUserCommande($user)
+                ->setCreditCommande($credit)
         ;
         $entityManager->persist($commande);
         $entityManager->flush();
+
         return $this->json($data);
+
     }
 }

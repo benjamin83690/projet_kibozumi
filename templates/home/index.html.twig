@@ -16,7 +16,7 @@
                                 <img src="https://via.placeholder.com/90" alt="logo" class="shadow-sm">
                                 <p> {{ categorie.titre }} </p>
                                 {% if is_granted('ROLE_ADMIN') %}
-                                <a href="{{ path('credit_show', {id: categorie.id}) }}" class="nav-link btn btn-info btn-sm d-inline-block">Ajouter un crédit</a>
+                                <a href="{{ path('category_show', {id: categorie.id}) }}" class="nav-link btn btn-info btn-sm d-inline-block">Ajouter un crédit</a>
                                 {% endif %}
                             </div>
                         </a>
