@@ -100,6 +100,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    
     <script>
         function arrondir(nombre) {
             let arrondi = nombre*100;          
@@ -121,32 +122,33 @@
                 $('.montantEmprunte')[i].innerHTML = montant;
             }
         })
-
-        $('.data').click((e) => { 
-                  
-            $.ajax({
-                data: {
-                    montant: $('#montant').val(),
-                    mensualites : $('#mensualites' + e.target.getAttribute('id'))[0].innerHTML,
-                    montantTotal: $('#montantTotal'+ e.target.getAttribute('id'))[0].innerHTML,
-                    creditId: e.target.getAttribute('id')
-                },
-                {% for credit in credits %}
-                url: "{{path('ajax', {user: app.user.id, id: credit.id})}}",
-                {% endfor %}
-                dataType: 'json',
-                complete: function() {
-                    // $('#send').prop('disabled', false);
-                    // $('#send').next().remove();
-                },
-                error: function () {
-                    alert('Desole erreur');
-                },
-                success: function (data) {
-                    console.log(data);
-                }
+        {% if is_granted('ROLE_USER') %}
+            $('.data').click((e) => { 
+                    
+                $.ajax({
+                    data: {
+                        montant: $('#montant').val(),
+                        mensualites : $('#mensualites' + e.target.getAttribute('id'))[0].innerHTML,
+                        montantTotal: $('#montantTotal'+ e.target.getAttribute('id'))[0].innerHTML,
+                        creditId: e.target.getAttribute('id')
+                    },
+                    {% for credit in credits %}
+                    url: "{{path('ajax', {user: app.user.id, id: credit.id})}}",
+                    {% endfor %}
+                    dataType: 'json',
+                    complete: function() {
+                        // $('#send').prop('disabled', false);
+                        // $('#send').next().remove();
+                    },
+                    error: function () {
+                        alert('Desole erreur');
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+                
             });
-            
-        });
+        {% endif %}
     </script>
 {% endblock %}

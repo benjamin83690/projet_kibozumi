@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Credit;
 use App\Entity\Category;
+use App\Entity\Commande;
 use App\Form\CategoryType;
 use App\Repository\CreditRepository;
 use App\Repository\CategoryRepository;
@@ -94,5 +96,34 @@ class CategoryController extends AbstractController
         }
 
         return $this->redirectToRoute('category_index');
+    }
+
+    /**
+    * @Route("/ajax/{user}/{id}", name="ajax", methods={"GET"})
+    */
+    public function ajax(Request $request, User $user, Credit $credit ): Response
+    {
+        $montant = $request->query->get('montant');
+        $mensualites = $request->query->get('mensualites');
+        $montantTotal = $request->query->get('montantTotal');
+        $creditId = $request->query->get('creditId');
+        
+        $data = [
+            'montantEmprunte'=> intval($montant),
+            'mensualites'=> floatval($mensualites),
+            'montantTotal'=> floatval($montantTotal),
+            'creditId'=> intval($creditId)
+        ];
+        $commande = new Commande();
+        $entityManager = $this->getDoctrine()->getManager();
+        $commande->setMontantEmprunte($montant)
+                ->setMontantTotal($montantTotal)
+                ->setMensualites($mensualites)
+                ->setUserCommande($user)
+                ->setCreditCommande($credit)
+        ;
+        $entityManager->persist($commande);
+        $entityManager->flush();
+        return $this->json($data);
     }
 }
