@@ -42,7 +42,7 @@
                                         Formule {{ loop.index }}
                                         <br>
                                         {% if is_granted('ROLE_USER') %}
-                                            <a class="btn btn-primary rounded data" id="{{loop.index}}">Choisir</a>
+                                            <a class="btn btn-primary rounded data" id="{{credits.id}}">Choisir</a>
                                         {% else %}
                                             <a class="btn btn-primary rounded" href="{{ path('app_login') }}">Choisir</a>
                                         {% endif %}
