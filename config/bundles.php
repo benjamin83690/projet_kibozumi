@@ -14,5 +14,8 @@ return [
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
+<<<<<<< HEAD
     // EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
+=======
+>>>>>>> parent of 2494aad... Merge branch 'dev' into clemen
 ];

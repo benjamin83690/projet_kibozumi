@@ -42,10 +42,14 @@
                                         Formule {{ loop.index }}
                                         <br>
                                         {% if is_granted('ROLE_USER') %}
+<<<<<<< HEAD
                                             <a class="btn btn-primary rounded data" id="{{credit.id}}" href="{{ path('user_show', {id: app.user.id}) }}">Choisir</a>
                                             <pre>
                                                 {{ dump(credit) }}
                                             </pre>
+=======
+                                            <a class="btn btn-primary rounded data" id="{{credits.id}}">Choisir</a>
+>>>>>>> parent of 2494aad... Merge branch 'dev' into clemen
                                         {% else %}
                                             <a class="btn btn-primary rounded" href="{{ path('app_login') }}">Choisir</a>
                                         {% endif %}
@@ -63,7 +67,7 @@
                                 <tr>
                                     <th scope="row">Mensualité</th>
                                     {% for credit in credits %}
-                                        <td class="mensualites" id="mensualites{{credit.id}}">{{ credit.mensualites }}</td>
+                                        <td class="mensualites" id="mensualites{{loop.index}}">{{ credit.mensualites }}</td>
                                     {% endfor %}
                                 </tr>
                                 <tr>
@@ -81,7 +85,7 @@
                                 <tr>
                                     <th scope="row">Montant Total</th>
                                     {% for credit in credits %}
-                                        <td class="montantTotal" id="montantTotal{{credit.id}}">{{ credit.montantTotal }}</td>
+                                        <td class="montantTotal" id="montantTotal{{loop.index}}">{{ credit.montantTotal }}</td>
                                     {% endfor %}
                                 </tr>
                             </tbody>
@@ -100,7 +104,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    
     <script>
         function arrondir(nombre) {
             let arrondi = nombre*100;          
@@ -122,33 +125,29 @@
                 $('.montantEmprunte')[i].innerHTML = montant;
             }
         })
-        {% if is_granted('ROLE_USER') %}
-            $('.data').click((e) => { 
-                    
-                $.ajax({
-                    data: {
-                        montant: $('#montant').val(),
-                        mensualites : $('#mensualites' + e.target.getAttribute('id'))[0].innerHTML,
-                        montantTotal: $('#montantTotal'+ e.target.getAttribute('id'))[0].innerHTML,
-                        creditId: e.target.getAttribute('id')
-                    },
-                    {% for credit in credits %}
-                    url: "{{path('ajax', {user: app.user.id, id: credit.id})}}",
-                    {% endfor %}
-                    dataType: 'json',
-                    complete: function() {
-                        // $('#send').prop('disabled', false);
-                        // $('#send').next().remove();
-                    },
-                    error: function () {
-                        alert('Desole erreur');
-                    },
-                    success: function (data) {
-                   
-                    }
-                });
-                
+
+        $('.data').click((e) => {
+            $.ajax({
+                data: {
+                    montant: $('#montant').val(),
+                    mensualites : $('#mensualites' + e.target.getAttribute('id'))[0].innerHTML,
+                    montantTotal: $('#montantTotal'+ e.target.getAttribute('id'))[0].innerHTML,
+                    creditId: e.target.getAttribute('id')
+                },
+                url: "{{path('ajax', {user: app.user.id})}}",
+                dataType: 'json',
+                complete: function() {
+                    // $('#send').prop('disabled', false);
+                    // $('#send').next().remove();
+                },
+                error: function () {
+                    alert('Desole erreur');
+                },
+                success: function (data) {
+                    console.log(data);
+                }
             });
-        {% endif %}
+            
+        });
     </script>
 {% endblock %}
