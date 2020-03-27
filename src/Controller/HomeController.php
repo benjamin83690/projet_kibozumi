@@ -58,7 +58,7 @@ class HomeController extends AbstractController
     /**
     * @Route("/ajax/{user}/{id}", name="ajax", methods={"GET"})
     */
-    public function ajax(Request $request, User $user, Credit $credit )
+    public function ajax(Request $request, User $user, Credit $credit ): Response
     {
         $montant = $request->query->get('montant');
         $mensualites = $request->query->get('mensualites');
@@ -81,8 +81,6 @@ class HomeController extends AbstractController
         ;
         $entityManager->persist($commande);
         $entityManager->flush();
-
         return $this->json($data);
-
     }
 }
