@@ -42,7 +42,7 @@
                                         Formule {{ loop.index }}
                                         <br>
                                         {% if is_granted('ROLE_USER') %}
-                                            <a class="btn btn-primary rounded data" id="{{credit.id}}" href="{{ path('user_show',{id: app.user.id}) }}">Choisir</a>
+                                            <a class="btn btn-primary rounded data" id="{{credit.id}}" href="{{ path('user_show', {id: app.user.id}) }}">Choisir</a>
                                             <pre>
                                                 {{ dump(credit) }}
                                             </pre>
