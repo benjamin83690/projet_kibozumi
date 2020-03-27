@@ -12,15 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Credit
 {
-<<<<<<< Updated upstream
-
-=======
-    public function __construct()
-    {
-        $this->updatedAt = new \DateTime();
-        $this->users = new ArrayCollection();
-    }
->>>>>>> Stashed changes
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -28,13 +19,6 @@ class Credit
      */
     private $id;
     /**
-<<<<<<< Updated upstream
-=======
-     * @ORM\Column(type="string", length=255)
-     */
-    private $titre;
-    /**
->>>>>>> Stashed changes
      * @ORM\Column(type="integer")
      */
     private $mensualites;
@@ -58,7 +42,6 @@ class Credit
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="userCredit")
      */
     private $users;
-<<<<<<< Updated upstream
 
     /**
     * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -103,30 +86,16 @@ class Credit
     private $creditCategory;
 
     public function __construct()
-=======
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-    public function getTitre(): ?string
->>>>>>> Stashed changes
     {
         $this->updatedAt = new \DateTime();
         $this->users = new ArrayCollection();
         $this->creditCategory = new ArrayCollection();
         $this->categories = new ArrayCollection();
     }
-<<<<<<< Updated upstream
 
     public function getId(): ?int
     {
         return $this->id;
-=======
-    public function setTitre(string $titre): self
-    {
-        $this->titre = $titre;
-        return $this;
->>>>>>> Stashed changes
     }
     public function getMensualites(): ?float
     {
@@ -197,33 +166,6 @@ class Credit
         return $this;
     }
     /**
-<<<<<<< Updated upstream
-
-=======
-    * NOTE: This is not a mapped field of entity metadata, just a simple property.
-    * 
-    * @Vich\UploadableField(mapping="credits_image", fileNameProperty="imageName")
-    * @Assert\Image(
-    * mimeTypesMessage = "choisir une image"
-    * )
-    * 
-    * @var File|null
-    */
-    private $imageFile;
-    /**
-    * @ORM\Column(type="string", nullable = true)
-    *
-    * @var string|null
-    */
-    private $imageName;
-    /**
-    * @ORM\Column(type="datetime")
-    *
-    * @var \DateTimeInterface|null
-    */
-    private $updatedAt;
-    /**
->>>>>>> Stashed changes
     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
     * of 'UploadedFile' is injected into this setter to trigger the update. If this
     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -245,10 +187,6 @@ class Credit
     {
         return $this->imageFile;
     }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     public function setImageName(?string $imageName): void
     {
         $this->imageName = $imageName;
@@ -257,7 +195,6 @@ class Credit
     {
         return $this->imageName;
     }
-<<<<<<< Updated upstream
 
     public function getCommande(): ?Commande
     {
@@ -265,10 +202,6 @@ class Credit
     }
 
     public function setCommande(Commande $commande): self
-=======
-    /////////////////////////////////
-    public function getNewMensualites($montant, $taux, $nbrMensualites)
->>>>>>> Stashed changes
     {
         $this->commande = $commande;
 
@@ -279,7 +212,6 @@ class Credit
 
         return $this;
     }
-<<<<<<< Updated upstream
 
 
     public function getCreditCategory()
@@ -288,16 +220,9 @@ class Credit
     }
 
     public function setCreditCategory(?Category $creditCategory): self
-=======
-    public function getNewMontantTotal($montant, $taux)
->>>>>>> Stashed changes
     {
         $this->creditCategory = $creditCategory;
 
         return $this;
     }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
