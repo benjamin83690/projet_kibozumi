@@ -12,10 +12,6 @@
                 <td>{{ credit.id }}</td>
             </tr>
             <tr>
-                <th>Titre</th>
-                <td>{{ credit.titre }}</td>
-            </tr>
-            <tr>
                 <th>Mensualites</th>
                 <td>{{ credit.mensualites }}</td>
             </tr>
@@ -35,9 +31,16 @@
                 <th>MontantTotal</th>
                 <td>{{ credit.montantTotal }}</td>
             </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ credit.imageName }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ credit.updatedAt ? credit.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
         </tbody>
     </table>
-
     <a href="{{ path('credit_index') }}">back to list</a>
 
     <a href="{{ path('credit_edit', {'id': credit.id}) }}">edit</a>

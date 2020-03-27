@@ -19,22 +19,19 @@ class CreditRepository extends ServiceEntityRepository
         parent::__construct($registry, Credit::class);
     }
 
-    // /**
-    //  * @return Credit[] Returns an array of Credit objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Credit[] Returns an array of Credit objects
+     */
+    public function findByCategory($value)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
+            ->andWhere('c.creditCategory = :val')
             ->setParameter('val', $value)
             ->orderBy('c.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Credit
