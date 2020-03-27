@@ -3,9 +3,18 @@
 {% block title %}New Credit{% endblock %}
 
 {% block body %}
-    <h1>Create new Credit</h1>
 
-    {{ include('credit/_form.html.twig') }}
+<div class="container">
+    <div class="row">
+        <div class="jumbotron col-md-7 m-auto shadow">
+            <div class="credit text-center p-4">
+                <h1>Créer un nouveau crédit</h1>
+                    {{ include('credit/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+</div>
 
-    <a href="{{ path('credit_index') }}">back to list</a>
+
+    {# <a href="{{ path('credit_index') }}">back to list</a> #}
 {% endblock %}
