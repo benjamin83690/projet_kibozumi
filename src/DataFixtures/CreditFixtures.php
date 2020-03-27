@@ -16,7 +16,7 @@ class CreditFixtures extends Fixture implements DependentFixtureInterface
                 ->setTitre('pret perso')
                 ->setMensualites(857.92)
                 ->setNombresMensualites(12)
-                ->setTauxFixe(0.0295)
+                ->setTauxFixe(2.95)
                 ->setMontantEmprunte(10000)
                 ->setMontantTotal(10295)
         ;
@@ -28,7 +28,7 @@ class CreditFixtures extends Fixture implements DependentFixtureInterface
                 ->setTitre('pret immo')
                 ->setMensualites(439.83)
                 ->setNombresMensualites(24)
-                ->setTauxFixe(0.0556)
+                ->setTauxFixe(4.50)
                 ->setMontantEmprunte(10000)
                 ->setMontantTotal(10560)
         ;
@@ -39,7 +39,7 @@ class CreditFixtures extends Fixture implements DependentFixtureInterface
                 ->setTitre('pret auto')
                 ->setMensualites(294.44)
                 ->setNombresMensualites(36)
-                ->setTauxFixe(0.06)
+                ->setTauxFixe(6)
                 ->setMontantEmprunte(10000)
                 ->setMontantTotal(10600)
         ;
