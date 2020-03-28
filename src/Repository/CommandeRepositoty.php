@@ -15,14 +15,14 @@ class CommandeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Commande::class);
     }
-    // /**
-    //  * @return Commande[] Returns an array of Commande objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Commande[] Returns an array of Commande objects
+     */
+    
+    public function findByCommandeUserId($value)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
+            ->andWhere('c.usercommande = :val')
             ->setParameter('val', $value)
             ->orderBy('c.id', 'ASC')
             ->setMaxResults(10)
@@ -30,7 +30,7 @@ class CommandeRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
     /*
     public function findOneBySomeField($value): ?Commande
     {
