@@ -85,7 +85,7 @@
         $('#send').click(()=> {
             for (let i = 0; i < $('.montantTotal').length; i++) {
                 const montant = parseInt($('#montant').val())
-                const taux = parseFloat($('.taux')[i].innerHTML);
+                const taux = parseFloat($('.taux')[i].innerHTML) / 100;
                 const nbrMensualites = parseInt($('.nbrMensualites')[i].innerHTML);
                 const total = (montant * taux) + montant;
                 const mensualites = total / nbrMensualites;
