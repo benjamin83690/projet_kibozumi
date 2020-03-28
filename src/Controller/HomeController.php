@@ -48,14 +48,16 @@ class HomeController extends AbstractController
         ]);
     }
     /**
-    * @Route("/ajax/{user}/{id}", name="ajax", methods={"GET"})
+    * @Route("/ajax/{user}", name="ajax", methods={"GET"})
     */
-    public function ajax(Request $request, User $user, Credit $credit ): Response
+    public function ajax(Request $request, User $user, CreditRepository $credits ): Response
     {
         $montant = $request->query->get('montant');
         $mensualites = $request->query->get('mensualites');
         $montantTotal = $request->query->get('montantTotal');
         $creditId = $request->query->get('creditId');
+        $credit_id = $credits->find($creditId);
+        
         $data = [
             'montantEmprunte'=> intval($montant),
             'mensualites'=> floatval($mensualites),
@@ -68,7 +70,7 @@ class HomeController extends AbstractController
                 ->setMontantTotal($montantTotal)
                 ->setMensualites($mensualites)
                 ->setUserCommande($user)
-                ->setCreditCommande($credit)
+                ->setCreditCommande($credit_id)
         ;
         $entityManager->persist($commande);
         $entityManager->flush();

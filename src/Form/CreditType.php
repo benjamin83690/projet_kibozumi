@@ -7,7 +7,6 @@ use App\Entity\Category;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,13 +16,11 @@ class CreditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre')
-            ->add('montantEmprunte')
-            ->add('mensualites')
+            ->add('mensualites', TextType::class)
             ->add('nombresMensualites')
+            ->add('montantEmprunte')
             ->add('tauxFixe')
             ->add('montantTotal')
-            ->add('imageName')
             // ->add('updatedAt')
             // ->add('users')
             ->add('creditCategory', EntityType::class, [
@@ -42,7 +39,6 @@ class CreditType extends AbstractType
             //                 ->orderBy('c.title', 'ASC');
             //     },
             // ])
-            ->add('imageFile', VichImageType::class, ['required'=> false])
         ;
     }
 

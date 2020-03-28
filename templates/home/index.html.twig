@@ -4,29 +4,94 @@
 
 {% block body %}
 
-<div>
+<section class="container-fluid bg-dark p-5">
     <div class="container">
         <div class="row">
-            <div class="jumbotron col-md-7 m-auto shadow">
-                <h2 class="text-center">Votre simulation</h2>
-                <div class="card flex-row justify-content-around p-4">
+            <h2 class="m-auto text-light pb-5">Kibozumi vous aide à concrétiser vos envies</h2>
+            <div class="col-md-5 p-3">
+                <h4 class="text-center font-weight-bold text-light pb-4">Quel est votre projet ?</h4>
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
                     {% for categorie in categories %}
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index }}" class="{% if loop.index == 1 %} active {% endif %}"></li>
+                    {% endfor %}
+                    </ol>
+                    <div class="carousel-inner">
+                        {% for categorie in categories %}
                         <a href="{{ path('category_show', {id: categorie.id}) }}">
-                            <div class="credit text-center p-4">
-                                <img src="https://via.placeholder.com/90" alt="logo" class="shadow-sm">
-                                <p> {{ categorie.titre }} </p>
-                                {% if is_granted('ROLE_ADMIN') %}
-                                <a href="{{ path('credit_show', {id: categorie.id}) }}" class="nav-link btn btn-info btn-sm d-inline-block">Ajouter un crédit</a>
-                                {% endif %}
+                            <div class="carousel-item shadow-sm{% if loop.index == 1 %} active {% endif %}">
+                                <img src="img/credits/{{ categorie.imageName }}" class="d-block w-100 m-0 rounded" alt="{{ categorie.imageName }}" id="{{ loop.index }}" height="350">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <a href="{{ path('category_show', {id: categorie.id}) }}" class="nav-link"><h5 class="text-light linkCat">{{ categorie.titre }}</h5></a>
+                                </div>
                             </div>
                         </a>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-                {# <a href="{{ path('credit_new') }}" class="nav-link btn btn-info btn-sm d-inline-block">Ajouter un crédit</a> #}
             </div>
-            
+            <div class="col-md-6 ml-auto d-flex align-items-center flex-column">
+                <h3 class="text-light font-weight-bold mb-3">
+                    Vous avez un projet ?<br>
+                    <span class="text-light font-weight-bold span-title">
+                        Kibozumi vous accompagne
+                        dans sa réalisation
+                    </span>
+                </h3>
+                <div class="cercle1 shadow-sm">
+                    <div class="cercle2">
+                        <p class="text-light">Prêt <br>Perso</p>
+                    </div>
+                    <p class="m-0 text-muted font-weight-bold">A partir de</p>
+                    <p class="numb">1</p>
+                    <p class="text-cercle">
+                        <span class="pourcent">%</span><br>
+                        <span class="taeg">TAEG FIXE</span> <br>
+                        <small>de 5000€ à 10&nbsp;000€ sur 12 mois
+                        jusqu'au 15/04/2020</small>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
-
-</div>
+</section>
+<section class="container p-5">
+    <div class="row">
+        <div class="col-md-5">
+            <h4 class="text-success">MESSAGE DE LA DIRECTION GÉNÉRALE</h4>
+            <div class="blue-divider success"></div>
+            
+            <br><br>
+            <p>
+                Chers Clients,
+                <br><br>
+                En cette période difficile, je tiens à vous assurer de la mobilisation de l’ensemble des collaborateurs de Crédit Agricole Consumer Finance et de ses marques.
+                <br><br>
+                Nous avons mis tout en œuvre pour protéger la santé de nos collaborateurs, lutter contre la propagation du virus et vous assurer une continuité de service maximale. Ce sont là nos seules priorités.
+                <br><br>
+                Dès les premières annonces du Président de la République, nous avons décidé la mise en place quasi intégrale du télétravail pour nos 3000 collaborateurs.
+                <br><br>
+                J’ai conscience du caractère exceptionnel de cette mesure et soyez sûrs de notre engagement à faire le maximum pour répondre à vos besoins.
+                <br><br>
+                L’ensemble de l’entreprise reste plus que jamais à votre écoute pour répondre à toutes vos demandes.
+                <br><br>
+                Prenez soin de vous et de vos proches.
+                <br><br>
+                La Direction
+                Du Crédit Agricole Consumer Finance
+            </p>
+        </div>
+        <div class="col-md-5 ml-auto">
+            <img src="{{ asset('images/kibozumi3.png') }}" alt="logo" class="img-fluid">
+        </div>
+    </div>
+</section>
 {% endblock %}

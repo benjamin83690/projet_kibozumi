@@ -1147,9 +1147,75 @@
                 "reflection",
                 "static"
             ],
+<<<<<<< HEAD
             "time": "2020-03-27T11:06:43+00:00"
+=======
+            "time": "2020-01-08T19:53:19+00:00"
         },
         {
+<<<<<<< HEAD
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/0c24092bc2b89ae20c22b1678ecff77bb606e3b4",
+                "reference": "0c24092bc2b89ae20c22b1678ecff77bb606e3b4",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": "^2.8",
+                "doctrine/doctrine-bundle": "^1.8|^2.0",
+                "doctrine/orm": "^2.6.3",
+                "doctrine/persistence": "^1.3.4",
+                "pagerfanta/pagerfanta": "^1.0.1|^2.0",
+                "php": "^7.1.3",
+                "symfony/asset": "^4.2|^5.0",
+                "symfony/cache": "^4.2|^5.0",
+                "symfony/config": "^4.2|^5.0",
+                "symfony/dependency-injection": "^4.2|^5.0",
+                "symfony/doctrine-bridge": "^4.2|^5.0",
+                "symfony/event-dispatcher": "^4.2|^5.0",
+                "symfony/expression-language": "^4.2|^5.0",
+                "symfony/finder": "^4.2|^5.0",
+                "symfony/form": "^4.2|^5.0",
+                "symfony/framework-bundle": "^4.2|^5.0",
+                "symfony/http-foundation": "^4.2|^5.0",
+                "symfony/http-kernel": "^4.3.7|^5.0",
+                "symfony/polyfill-mbstring": "^1.7",
+                "symfony/property-access": "^4.2|^5.0",
+                "symfony/security-bundle": "^4.2|^5.0",
+                "symfony/translation": "^4.2|^5.0",
+                "symfony/twig-bridge": "^4.2|^5.0",
+                "symfony/twig-bundle": "^4.2|^5.0",
+                "symfony/validator": "^4.2|^5.0",
+                "twig/twig": "^2.11.3|^3.0"
+            },
+            "require-dev": {
+                "doctrine/data-fixtures": "^1.3",
+                "doctrine/doctrine-fixtures-bundle": "^3.0",
+                "psr/log": "~1.0",
+                "symfony/browser-kit": "^4.2|^5.0",
+                "symfony/console": "^4.2|^5.0",
+                "symfony/css-selector": "^4.2|^5.0",
+                "symfony/dom-crawler": "^4.2|^5.0",
+                "symfony/phpunit-bridge": "^4.3.5|^5.0",
+                "symfony/var-dumper": "^4.2|^5.0",
+                "symfony/yaml": "^4.2|^5.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2020-01-18T15:07:00+00:00"
+>>>>>>> benjamin
+        },
+        {
+=======
+>>>>>>> parent of d87308b... Merge branch 'dev' into test
             "name": "egulias/email-validator",
             "version": "2.1.17",
             "source": {
@@ -2162,7 +2228,11 @@
             ],
             "description": "Symfony Asset Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-15T10:05:03+00:00"
+=======
+            "time": "2020-02-24T13:10:00+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/cache",
@@ -2241,7 +2311,11 @@
                 "caching",
                 "psr6"
             ],
+<<<<<<< HEAD
             "time": "2020-03-17T19:51:46+00:00"
+=======
+            "time": "2020-02-20T16:31:44+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/cache-contracts",
@@ -2439,7 +2513,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-16T08:56:54+00:00"
+=======
+            "time": "2020-02-24T13:10:00+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/debug",
@@ -2568,7 +2646,11 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-18T07:51:32+00:00"
+=======
+            "time": "2020-02-29T09:50:10+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/doctrine-bridge",
@@ -2662,7 +2744,11 @@
             ],
             "description": "Symfony Doctrine Bridge",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-16T11:24:17+00:00"
+=======
+            "time": "2020-02-24T17:16:47+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/dotenv",
@@ -2954,7 +3040,11 @@
             ],
             "description": "Symfony ExpressionLanguage Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-15T10:05:03+00:00"
+=======
+            "time": "2020-02-24T13:10:00+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/filesystem",
@@ -3186,7 +3276,11 @@
             ],
             "description": "Symfony Form Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-23T12:37:11+00:00"
+=======
+            "time": "2020-02-29T10:05:28+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/framework-bundle",
@@ -3317,7 +3411,11 @@
             ],
             "description": "Symfony FrameworkBundle",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-19T20:46:03+00:00"
+=======
+            "time": "2020-02-28T13:15:16+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/http-client",
@@ -3385,7 +3483,11 @@
             ],
             "description": "Symfony HttpClient component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-16T16:13:17+00:00"
+=======
+            "time": "2020-02-25T13:55:11+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/http-client-contracts",
@@ -3497,7 +3599,11 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-23T12:37:11+00:00"
+=======
+            "time": "2020-02-13T19:40:01+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/http-kernel",
@@ -3587,7 +3693,11 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-27T08:32:28+00:00"
+=======
+            "time": "2020-02-29T10:31:38+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/inflector",
@@ -3720,7 +3830,11 @@
                 "l10n",
                 "localization"
             ],
+<<<<<<< HEAD
             "time": "2020-03-16T16:04:53+00:00"
+=======
+            "time": "2020-02-04T09:32:40+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/mailer",
@@ -3917,7 +4031,11 @@
             ],
             "description": "Symfony Monolog Bridge",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-16T11:24:17+00:00"
+=======
+            "time": "2020-02-04T09:32:40+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/monolog-bundle",
@@ -4525,7 +4643,11 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-23T12:37:11+00:00"
+=======
+            "time": "2020-02-07T20:06:44+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/property-access",
@@ -4744,7 +4866,11 @@
                 "uri",
                 "url"
             ],
+<<<<<<< HEAD
             "time": "2020-03-16T11:24:17+00:00"
+=======
+            "time": "2020-02-25T12:41:09+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/security-bundle",
@@ -4827,7 +4953,11 @@
             ],
             "description": "Symfony SecurityBundle",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-17T19:48:51+00:00"
+=======
+            "time": "2020-02-26T10:27:30+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/security-core",
@@ -5013,7 +5143,11 @@
             ],
             "description": "Symfony Security Component - Guard",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-23T12:37:11+00:00"
+=======
+            "time": "2020-02-24T13:10:00+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/security-http",
@@ -5079,7 +5213,11 @@
             ],
             "description": "Symfony Security Component - HTTP Integration",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-23T12:37:11+00:00"
+=======
+            "time": "2020-02-26T10:27:30+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/serializer",
@@ -5161,7 +5299,11 @@
             ],
             "description": "Symfony Serializer Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-16T11:24:17+00:00"
+=======
+            "time": "2020-02-29T10:05:28+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/serializer-pack",
@@ -5439,7 +5581,11 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-17T19:51:46+00:00"
+=======
+            "time": "2020-02-04T09:32:40+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/translation-contracts",
@@ -5599,7 +5745,11 @@
             ],
             "description": "Symfony Twig Bridge",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-17T19:51:46+00:00"
+=======
+            "time": "2020-02-14T08:28:51+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/twig-bundle",
@@ -5795,7 +5945,11 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-23T12:37:11+00:00"
+=======
+            "time": "2020-02-29T10:05:28+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/var-dumper",
@@ -5871,7 +6025,11 @@
                 "debug",
                 "dump"
             ],
+<<<<<<< HEAD
             "time": "2020-03-18T07:15:43+00:00"
+=======
+            "time": "2020-02-24T13:10:00+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/var-exporter",
@@ -6066,7 +6224,11 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-16T08:56:54+00:00"
+=======
+            "time": "2020-02-03T10:46:43+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "twig/extra-bundle",
@@ -6885,7 +7047,11 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2020-03-16T11:24:17+00:00"
+=======
+            "time": "2020-02-29T10:05:28+00:00"
+>>>>>>> benjamin
         },
         {
             "name": "symfony/maker-bundle",
