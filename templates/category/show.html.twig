@@ -42,10 +42,7 @@
                                         Formule {{ loop.index }}
                                         <br>
                                         {% if is_granted('ROLE_USER') %}
-                                            <a class="btn btn-primary rounded data" id="{{credit.id}}" href="{{ path('credit_show', {id: credit.id}) }}">Choisir</a>
-                                            <pre>
-                                                {{ dump(credit) }}
-                                            </pre>
+                                            <a class="btn btn-primary rounded data" id="{{credit.id}}" href="{{ path('user_show', {id: app.user.id}) }}">Choisir</a>
                                         {% else %}
                                             <a class="btn btn-primary rounded" href="{{ path('app_login') }}">Choisir</a>
                                         {% endif %}
@@ -132,13 +129,9 @@
                         montantTotal: $('#montantTotal'+ e.target.getAttribute('id'))[0].innerHTML,
                         creditId: e.target.getAttribute('id')
                     },
-                    {% for credit in credits %}
-                    url: "{{path('ajax', {user: app.user.id, id: credit.id})}}",
-                    {% endfor %}
+                    url: "{{path('ajax', {user: app.user.id})}}",
                     dataType: 'json',
                     complete: function() {
-                        // $('#send').prop('disabled', false);
-                        // $('#send').next().remove();
                     },
                     error: function () {
                         alert('Desole erreur');

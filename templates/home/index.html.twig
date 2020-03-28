@@ -4,11 +4,12 @@
 
 {% block body %}
 
-<div>
+<div class="container-fluid bg-dark p-5">
     <div class="container">
         <div class="row">
-            <div class="jumbotron col-md-7 m-auto shadow">
-                <h2 class="text-center">Votre simulation</h2>
+            <h2 class="m-auto text-light pb-5">Kibozumi vous aide à concrétiser vos envies</h2>
+            <div class="jumbotron col-md-5 shadow border-top border-info">
+                <p class="text-center font-weight-bold">Quel est votre projet ?</p>
                 <div class="card flex-row justify-content-around p-4">
                     {% for categorie in categories %}
                         <a href="{{ path('category_show', {id: categorie.id}) }}">
@@ -22,10 +23,35 @@
                         </a>
                     {% endfor %}
                 </div>
-                {# <a href="{{ path('credit_new') }}" class="nav-link btn btn-info btn-sm d-inline-block">Ajouter un crédit</a> #}
+            </div>
+            <div class="col-md-6 ml-auto d-flex align-items-center flex-column">
+                <h3 class="text-light font-weight-bold mb-3">
+                    Vous avez un projet ?<br>
+                    <span class="text-light font-weight-bold span-title">
+                        Kibozumi vous accompagne
+                        dans sa réalisation
+                    </span>
+                </h3>
+                {# <h5 class="text-light font-weight-bold mb-3">
+                    Kibozumi vous accompagne <br>
+                    dans sa réalisation
+                </h5> #}
+
+                <div class="cercle1 shadow-sm">
+                    <div class="cercle2">
+                        <p class="text-light">Prêt <br>Perso</p>
+                    </div>
+                    <p class="m-0 text-muted font-weight-bold">A partir de</p>
+                    <p class="numb">1</p>
+                    <p class="text-cercle">
+                        <span class="pourcent">%</span><br>
+                        <span class="taeg">TAEG FIXE</span> <br>
+                        <small>de 5000€ à 10&nbsp;000€ sur 12 mois
+                        jusqu'au 15/04/2020</small>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
 {% endblock %}

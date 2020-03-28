@@ -1,0 +1,68 @@
+.span-title {
+    font-size: 1.3rem;
+    padding-left: 16px;
+}
+
+.cercle1 {
+    width: 200px;
+    height: 200px;
+    background: white;
+    border-radius: 50%;
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+}
+
+.cercle2 {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    padding: 0.7em;
+    position: absolute;
+    background-color: #125447;
+    right: -14px;
+    top: 0;
+    font-size: small;
+}
+
+.text-cercle {
+    margin: 0;
+    text-align: center;
+    color: #125447;
+}
+
+.numb {
+    margin: 0px 5px 0 0;
+    float: left;
+    font-size: 3em;
+    font-weight: bold;
+    border-bottom: solid 3px red;
+    color: #125447;
+}
+
+.pourcent {
+    font-size: 35px;
+    float: left;
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+.taeg {
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+}
+
+.text-cercle::after {
+    position: absolute;
+    left: 25px;
+    bottom: 0;
+    border-top: 24px solid transparent;
+    border-left: 24px solid #fff;
+    border-right: 0px solid #fff;
+    border-bottom: 24px solid transparent;
+    content: " ";
+    transform: rotate(27deg);
+}
