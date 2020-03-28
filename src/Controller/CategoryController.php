@@ -18,12 +18,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 
 /**
- * @Route("/admin")
+ * @Route("/admin/category")
  */
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/category", name="category_index", methods={"GET"})
+     * @Route("/", name="category_index", methods={"GET"})
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
@@ -33,7 +33,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/create", name="category_new", methods={"GET","POST"})
+     * @Route("/new", name="category_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -41,14 +41,9 @@ class CategoryController extends AbstractController
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
-        $credit = new Credit();
-        $form2 = $this->createForm(CreditType::class, $credit);
-        $form2->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($category);
-            $entityManager->persist($credit);
             $entityManager->flush();
 
             return $this->redirectToRoute('category_index');
@@ -56,14 +51,12 @@ class CategoryController extends AbstractController
 
         return $this->render('category/new.html.twig', [
             'category' => $category,
-            'credit' => $credit,
             'form' => $form->createView(),
-            'form2' => $form2->createView(),
         ]);
     }
 
     /**
-     * @Route("/category/{id}/edit", name="category_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="category_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Category $category): Response
     {
@@ -83,7 +76,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/category/{id}", name="category_delete", methods={"DELETE"})
+     * @Route("/{id}", name="category_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Category $category): Response
     {

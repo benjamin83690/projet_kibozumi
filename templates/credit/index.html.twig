@@ -15,7 +15,6 @@
                 <th>MontantEmprunte</th>
                 <th>TauxFixe</th>
                 <th>MontantTotal</th>
-                <th>ImageName</th>
                 <th>UpdatedAt</th>
                 <th>actions</th>
             </tr>
@@ -30,7 +29,6 @@
                 <td>{{ credit.montantEmprunte }}</td>
                 <td>{{ credit.tauxFixe }}</td>
                 <td>{{ credit.montantTotal }}</td>
-                <td>{{ credit.imageName }}</td>
                 <td>{{ credit.updatedAt ? credit.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('credit_show', {'id': credit.id}) }}">show</a>
