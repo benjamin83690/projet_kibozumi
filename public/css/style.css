@@ -1,3 +1,91 @@
+
+.text-primary {
+    color: #B0F4DB !important;
+}
+
+.text-success{
+    color: #00A98A !important;
+}
+.text-dark {
+    color: #00684D !important;
+}
+
+.text-secondary {
+    color: #132A40 !important;
+}
+
+.text-danger {
+    color: #535453 !important;
+}
+
+
+.text-info {
+    color: #0092BB !important;
+}
+
+.btn-color {
+    background: #076f65;
+    border: none;
+    color: #fff;
+}
+
+.active2 {
+    background-color: #eee !important;
+    color: #000;
+}
+
+
+/* ---------- bg -------------- */
+
+.primary {
+    background-color: #B0F4DB !important;
+    color: #00A98A !important;
+}
+
+.success{
+    background-color: #00A98A !important;
+    color: #B0F4DB !important;
+}
+
+.dark {
+    background-color: #00684D !important;
+    color: #00A98A !important;
+}
+
+.secondary {
+    background-color: #132A40 !important;
+    color: #535453 !important;
+}
+
+.danger {
+    background-color: #535453 !important;
+    color: #132A40 !important;
+}
+
+.info {
+    background-color: #0092BB !important;
+    color: lightblue !important;
+}
+
+.totalM1 {
+    background-color: #B0F4DB !important;
+    color: #00A98A !important;
+}
+
+.totalM2 {
+    background-color: #00A98A !important;
+    color: #B0F4DB !important;
+}
+
+.totalM3 {
+    background-color: #00684D !important;
+    color: #00A98A !important;
+}
+
+
+/* ------------------------------------------ */
+
+
 .span-title {
     font-size: 1.3rem;
     padding-left: 16px;
@@ -21,7 +109,9 @@
     text-align: center;
     padding: 0.7em;
     position: absolute;
-    background-color: #125447;
+    /* background-color: #125447; */
+    background-color: #00684D;
+    ;
     right: -14px;
     top: 0;
     font-size: small;
@@ -65,4 +155,41 @@
     border-bottom: 24px solid transparent;
     content: " ";
     transform: rotate(27deg);
+}
+
+.linkCat {
+    text-shadow: 1px 2px 2px #0000009c;
+}
+
+.blue-divider {
+    width: 25px;
+    height: 3px;
+}
+
+.imageCredit {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 25px;
+    height: 100%;
+}
+
+.wrapCredit {
+    border-radius: 25px;
+}
+
+.wrapCredit2 {
+    background: transparent;
+    border: none;
+}
+
+.tableau {
+    border-collapse: unset !important;
+}
+
+.tableau>tbody>tr>th {
+    text-align: left;
 }

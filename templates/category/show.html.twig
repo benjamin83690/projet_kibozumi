@@ -3,97 +3,74 @@
 {% block title %}{{ parent() }} sur nos Crédit{% endblock %}
 
 {% block body %}
-    <h1>Category</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ category.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ category.titre }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <section>
-        <div>
-            <div class="container">
-                <div class="row">
-                    <div class="jumbotron col-md-4 m-auto shadow">
-                        <h4 class="text-center">Votre simulation de : {{ category.titre }}</h4>
-                        <div class="card flex-row justify-content-around p-4">
-                            <div class="form-group">
-                                <label for="">Montant du prêt :</label>
-                                <input type="number" name="montant" id="montant" class="form-control" value="10000">
-                            </div>
-                            <button id="send" class="btn btn-success">Ok</button>
-                        </div>
+    <section class="container my-5">
+        <div class="row">
+            <div class="jumbotron col-md-4 shadow wrapCredit m-0">
+                <div class="card flex-column justify-content-around p-4 wrapCredit2">
+                    <h4 class="text-center text-danger">Votre simulation de : {{ category.titre }}</h4>
+                    <div class="form-group">
+                        <label for="montant" class="labelMontant text-danger">Montant du prêt :</label>
+                        <input type="number" name="montant" id="montant" class="form-control" value="10000">
                     </div>
-                    <div class="col-md-8">
-                        <table class="table table-striped">
-                            <thead class="bg-success">
-                                <tr>
-                                    <th scope="col"></th>
-                                    {% for credit in credits %}
-                                    <th scope="col">
-                                        Formule {{ loop.index }}
-                                        <br>
-                                        {% if is_granted('ROLE_USER') %}
-                                            <a class="btn btn-primary rounded data" id="{{credit.id}}" href="{{ path('user_show', {id: app.user.id}) }}">Choisir</a>
-                                        {% else %}
-                                            <a class="btn btn-primary rounded" href="{{ path('app_login') }}">Choisir</a>
-                                        {% endif %}
-                                    </th>
-                                    {% endfor %}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                    <tr>
-                                        <th scope="row">Montant emprunté</th>
-                                        {% for credit in credits %}
-                                            <td class="montantEmprunte">{{ credit.montantEmprunte }}</td>
-                                        {% endfor %}
-                                    </tr>
-                                <tr>
-                                    <th scope="row">Mensualité</th>
-                                    {% for credit in credits %}
-                                        <td class="mensualites" id="mensualites{{credit.id}}">{{ credit.mensualites }}</td>
-                                    {% endfor %}
-                                </tr>
-                                <tr>
-                                    <th scope="row">Nombres Mensualité</th>
-                                    {% for credit in credits %}
-                                        <td class="nbrMensualites">{{ credit.nombresMensualites }}</td>
-                                    {% endfor %}
-                                </tr>
-                                <tr>
-                                    <th scope="row">Taux Fixe</th>
-                                    {% for credit in credits %}
-                                        <td class="taux">{{ credit.tauxFixe }}</td>
-                                    {% endfor %}
-                                </tr>
-                                <tr>
-                                    <th scope="row">Montant Total</th>
-                                    {% for credit in credits %}
-                                        <td class="montantTotal" id="montantTotal{{credit.id}}">{{ credit.montantTotal }}</td>
-                                    {% endfor %}
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <button id="send" class="btn btn-success btn-block">Simuler</button>
                 </div>
+            </div>
+            <div class="col-md-8 d-flex align-items-center">
+                <table class="table table-bordered text-center tableau modal">
+                    <thead class="bg-success">
+                        <tr>
+                            <th scope="col" class="bg-white"></th>
+                            {% for credit in credits %}
+                            <th scope="col">
+                                Formule {{ loop.index }}
+                                <br>
+                                {% if is_granted('ROLE_USER') %}
+                                    <a class="btn btn-color rounded-pill data" id="{{credit.id}}" href="{{ path('user_show', {id: app.user.id}) }}">Choisir</a>
+                                {% else %}
+                                    <a class="btn btn-color rounded-pill" href="{{ path('app_login') }}">Choisir</a>
+                                {% endif %}
+                            </th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <th scope="row">Montant emprunté</th>
+                                {% for credit in credits %}
+                                    <td class="montantEmprunte active{{ loop.index }}">{{ credit.montantEmprunte }}</td>
+                                {% endfor %}
+                            </tr>
+                        <tr>
+                            <th scope="row">Mensualité</th>
+                            {% for credit in credits %}
+                                <td class="mensualites active{{ loop.index }}" id="mensualites{{credit.id}}">{{ credit.mensualites }} mois</td>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <th scope="row">Nombres Mensualité</th>
+                            {% for credit in credits %}
+                                <td class="nbrMensualites active{{ loop.index }}">{{ credit.nombresMensualites }} mois</td>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <th scope="row">Taux Fixe</th>
+                            {% for credit in credits %}
+                                <td class="taux active{{ loop.index }}">{{ credit.tauxFixe * 100 }} %</td>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <th scope="row">Montant Total</th>
+                            {% for credit in credits %}
+                                <td class="montantTotal totalM{{ loop.index }}" id="montantTotal{{credit.id}}">{{ credit.montantTotal }}</td>
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
-    <a href="{{ path('category_index') }}">back to list</a>
-
-    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
-
-    {{ include('category/_delete_form.html.twig') }}
 {% endblock %}
 
 {% block javascripts %}
@@ -114,10 +91,11 @@
                 const total = (montant * taux) + montant;
                 const mensualites = total / nbrMensualites;
 
-                $('.mensualites')[i].innerHTML = arrondir(mensualites);
-                $('.montantTotal')[i].innerHTML = total;
-                $('.montantEmprunte')[i].innerHTML = montant;
+                $('.mensualites')[i].innerHTML = arrondir(mensualites) + " <sup>&euro;</sup> / mois";
+                $('.montantTotal')[i].innerHTML = total + " <sup>&euro;</sup>";
+                $('.montantEmprunte')[i].innerHTML = montant + " <sup>&euro;</sup>";
             }
+            $('table').removeClass('modal');
         })
         {% if is_granted('ROLE_USER') %}
             $('.data').click((e) => { 
