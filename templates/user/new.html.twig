@@ -3,17 +3,9 @@
 {% block title %}New User{% endblock %}
 
 {% block body %}
-    
-<div class="container">
-    <div class="row">
-        <div class="jumbotron col-md-7 m-auto shadow">
-            <div class="credit text-center p-4">
-                <h1>Inscrivez-vous</h1>
-                    {{ include('user/_form.html.twig') }}
-            </div>
-        </div>
-    </div>
-</div>
+    <h1>Create new User</h1>
 
-    {# <a href="{{ path('user_index') }}">back to list</a> #}
+    {{ include('user/_form.html.twig') }}
+
+    <a href="{{ path('user_index') }}">back to list</a>
 {% endblock %}

@@ -2,59 +2,37 @@
 
 namespace App\Controller;
 
-
-use App\Entity\User;
 use App\Entity\Credit;
-use App\Entity\Category;
-use App\Entity\Commande;
 use App\Repository\CreditRepository;
-use App\Repository\CategoryRepository;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function index(CategoryRepository $category)
+    public function index(CreditRepository $credit)
     {
         return $this->render('home/index.html.twig', [
-            'categories' => $category->findAll(),
-        ]);
-    }
-
-    // /**
-    // * @Route("/credit/{id<\d+>}", name="home_credit", methods={"GET"})
-    // */
-    // public function credit(Credit $credit, CreditRepository $credits)
-    // {
-    //     return $this->render('home/credit.html.twig', [
-    //         'credit' => $credit,
-    //         'credits' => $credits->findAll()
-    //     ]);
-    // }
-
-    public function menu(CategoryRepository $category)
-    {
-        return $this->render('home/menu.html.twig', [
-            'categories' => $category->findAll(),
+            'userCredit' => $credit->findAll(),
         ]);
     }
 
     /**
-    * @Route("/commande/{id}", name="category_show", methods={"GET", "POST"})
+    * @Route("/credit/{id<\d+>}", name="home_credit", methods={"GET"})
     */
-    public function show(Category $category, CreditRepository $credits): Response
+    public function credit(Credit $credit, CreditRepository $credits)
     {
-        return $this->render('category/show.html.twig', [
-            'category' => $category,
-            'credits' => $credits->findByCategory($category->getId()),
+        return $this->render('home/credit.html.twig', [
+            'credit' => $credit,
+            'credits' => $credits->findAll()
         ]);
     }
 
+<<<<<<< Updated upstream
     /**
     * @Route("/ajax/{user}/{id}", name="ajax", methods={"GET"})
     */
@@ -84,5 +62,12 @@ class HomeController extends AbstractController
 
         return $this->json($data);
 
+=======
+    public function menu(CreditRepository $credit)
+    {
+        return $this->render('home/menu.html.twig', [
+            'credits' => $credit->findAll(),
+        ]);
+>>>>>>> Stashed changes
     }
 }

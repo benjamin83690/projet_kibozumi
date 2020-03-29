@@ -1150,6 +1150,7 @@
             "time": "2020-01-08T19:53:19+00:00"
         },
         {
+<<<<<<< Updated upstream
             "name": "easycorp/easyadmin-bundle",
             "version": "v2.3.5",
             "source": {
@@ -1234,6 +1235,8 @@
             "time": "2020-01-18T15:07:00+00:00"
         },
         {
+=======
+>>>>>>> Stashed changes
             "name": "egulias/email-validator",
             "version": "2.1.17",
             "source": {

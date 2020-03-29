@@ -10,6 +10,7 @@
             <div class="jumbotron col-md-7 m-auto shadow">
                 <h2 class="text-center">Votre simulation</h2>
                 <div class="card flex-row justify-content-around p-4">
+<<<<<<< Updated upstream
                     {% for categorie in categories %}
                         <a href="{{ path('category_show', {id: categorie.id}) }}">
                             <div class="credit text-center p-4">
@@ -17,14 +18,28 @@
                                 <p> {{ categorie.titre }} </p>
                                 {% if is_granted('ROLE_ADMIN') %}
                                 <a href="{{ path('category_show', {id: categorie.id}) }}" class="nav-link btn btn-info btn-sm d-inline-block">Ajouter un crédit</a>
+=======
+                    {% for credit in userCredit %}
+                        <a href="credit/{{ credit.id }}">
+                            <div class="credit text-center p-4">
+                                <img src="https://via.placeholder.com/90" alt="logo" class="shadow-sm">
+                                <p> {{ credit.titre }} </p>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('credit_show', {id: credit.id}) }}" class="nav-link btn btn-info btn-sm d-inline-block">Ajouter un crédit</a>
+>>>>>>> Stashed changes
                                 {% endif %}
                             </div>
                         </a>
                     {% endfor %}
                 </div>
+<<<<<<< Updated upstream
                 {# <a href="{{ path('credit_new') }}" class="nav-link btn btn-info btn-sm d-inline-block">Ajouter un crédit</a> #}
             </div>
             
+=======
+                <a href="{{ path('credit_new') }}" class="nav-link btn btn-info btn-sm d-inline-block">Ajouter un crédit</a>
+            </div>
+>>>>>>> Stashed changes
         </div>
     </div>
 

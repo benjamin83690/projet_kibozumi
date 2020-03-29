@@ -55,11 +55,6 @@ class User implements UserInterface
      */
     private $userCredit;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="userCommande", cascade={"persist", "remove"})
-     */
-    private $commande;
-
     public function __construct()
     {
         $this->userCredit = new ArrayCollection();
@@ -200,23 +195,6 @@ class User implements UserInterface
     {
         if ($this->userCredit->contains($userCredit)) {
             $this->userCredit->removeElement($userCredit);
-        }
-
-        return $this;
-    }
-
-    public function getCommande(): ?Commande
-    {
-        return $this->commande;
-    }
-
-    public function setCommande(Commande $commande): self
-    {
-        $this->commande = $commande;
-
-        // set the owning side of the relation if necessary
-        if ($commande->getUserCommande() !== $this) {
-            $commande->setUserCommande($this);
         }
 
         return $this;

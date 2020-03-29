@@ -3,25 +3,33 @@
 namespace App\Form;
 
 use App\Entity\Credit;
-use App\Entity\Category;
-use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+<<<<<<< Updated upstream
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+=======
+>>>>>>> Stashed changes
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class CreditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+<<<<<<< Updated upstream
             ->add('montantEmprunte')
             ->add('mensualites', TextType::class)
+=======
+            ->add('titre')
+            ->add('mensualites')
+>>>>>>> Stashed changes
             ->add('nombresMensualites')
             ->add('tauxFixe')
             ->add('montantTotal')
+<<<<<<< Updated upstream
             ->add('imageName')
             // ->add('updatedAt')
             // ->add('users')
@@ -41,6 +49,9 @@ class CreditType extends AbstractType
             //                 ->orderBy('c.title', 'ASC');
             //     },
             // ])
+=======
+            // ->add('users')
+>>>>>>> Stashed changes
             ->add('imageFile', VichImageType::class, ['required'=> false])
         ;
     }

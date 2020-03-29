@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="jumbotron col-md-4 m-auto shadow">
-                <h4 class="text-center">Votre simulation de :</h4>
+                <h4 class="text-center">Votre simulation de {{ credit.titre }} :</h2>
                 <div class="card flex-row justify-content-around p-4">
                     <div class="form-group">
                         <label for="">Montant du prêt :</label>
@@ -22,17 +22,25 @@
                     <thead class="bg-success">
                         <tr>
                             <th scope="col"></th>
-                            {% for credit in credits %}
                             <th scope="col">
-                                Formule {{ loop.index }}
+                                Formule 1
                                 <br>
                                 {% if is_granted('ROLE_USER') %}
-                                    <a class="btn btn-primary rounded data" id="{{loop.index}}">Choisir</a>
+                                <a class="btn btn-primary rounded text-light">Choisir</a>
                                 {% else %}
-                                    <a class="btn btn-primary rounded" href="{{ path('app_login') }}">Choisir</a>
+                                <a class="btn btn-primary rounded" href="{{ path('app_login') }}">Choisir</a>
                                 {% endif %}
                             </th>
-                            {% endfor %}
+                            <th scope="col">
+                                Formule 2
+                                <br>
+                                <button class="btn btn-primary rounded">Choisir</button>
+                            </th>
+                            <th scope="col">
+                                Formule 3
+                                <br>
+                                <button class="btn btn-primary rounded">Choisir</button>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,7 +53,7 @@
                         <tr>
                             <th scope="row">Mensualité</th>
                             {% for credit in credits %}
-                                <td class="mensualites" id="mensualites{{loop.index}}">{{ credit.mensualites }}</td>
+                                <td class="mensualites">{{ credit.mensualites }}</td>
                             {% endfor %}
                         </tr>
                         <tr>
@@ -63,7 +71,7 @@
                         <tr>
                             <th scope="row">Montant Total</th>
                             {% for credit in credits %}
-                                <td class="montantTotal" id="montantTotal{{loop.index}}">{{ credit.montantTotal }}</td>
+                                <td class="montantTotal">{{ credit.montantTotal }}</td>
                             {% endfor %}
                         </tr>
                     </tbody>
@@ -71,6 +79,7 @@
             </div>
         </div>
     </div>
+
 </div>
 {% endblock %}
 {% block javascripts %}
@@ -95,27 +104,5 @@
                 $('.montantEmprunte')[i].innerHTML = montant;
             }
         })
-        $('.data').click((e) => {
-            $.ajax({
-                data: {
-                    montant: $('#montant').val(),
-                    mensualites : $('#mensualites' + e.target.getAttribute('id'))[0].innerHTML,
-                    montantTotal: $('#montantTotal'+ e.target.getAttribute('id'))[0].innerHTML,
-                },
-                url: '{{path("ajax", {id: credit.id, user: app.user.id})}}',
-                dataType: 'json',
-                complete: function() {
-                    // $('#send').prop('disabled', false);
-                    // $('#send').next().remove();
-                },
-                error: function () {
-                    alert('Desole erreur');
-                },
-                success: function (data) {
-                    console.log(data);
-                }
-            });
-            
-        });
     </script>
 {% endblock %}

@@ -3,26 +3,25 @@
 namespace App\Controller;
 
 use App\Entity\Credit;
-use App\Entity\Category;
 use App\Form\CreditType;
 use App\Repository\CreditRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/credit")
+ * @Route("/admin/credit")
  */
 class CreditController extends AbstractController
 {
     /**
-    * @Route("/", name="credit_index", methods={"GET"})
-    */
-    public function index(CreditRepository $credits)
+     * @Route("/", name="credit_index", methods={"GET"})
+     */
+    public function index(CreditRepository $creditRepository): Response
     {
         return $this->render('credit/index.html.twig', [
-            'credits' => $credits->findAll(),
+            'credits' => $creditRepository->findAll(),
         ]);
     }
 
