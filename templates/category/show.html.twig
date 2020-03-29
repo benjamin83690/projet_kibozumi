@@ -54,7 +54,7 @@
                         <tr>
                             <th scope="row">Taux Fixe</th>
                             {% for credit in credits %}
-                                <td class="taux active{{ loop.index }}">{{ credit.tauxFixe * 100 }} %</td>
+                                <td class="taux active{{ loop.index }}">{{ credit.tauxFixe }} %</td>
                             {% endfor %}
                         </tr>
                         <tr>
@@ -82,7 +82,7 @@
                 const montant = parseInt($('#montant').val())
                 const taux = parseFloat($('.taux')[i].innerHTML);
                 const nbrMensualites = parseInt($('.nbrMensualites')[i].innerHTML);
-                const total = (montant * taux) + montant;
+                const total = ((montant * taux) / 100) + montant;
                 const mensualites = total / nbrMensualites;
 
                 $('.mensualites')[i].innerHTML = arrondir(mensualites) + " <sup>&euro;</sup> / mois";
