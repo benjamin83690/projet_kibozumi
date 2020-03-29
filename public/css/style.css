@@ -38,6 +38,8 @@
     margin-top: 4rem;
 }
 
+/* ---------------------------------- */
+
 .mb-6 {
     margin-bottom: 4rem;
 }
@@ -195,13 +197,13 @@
     border: none;
 }
 
-.tableau {
+/* .tableau {
     border-collapse: unset !important;
 }
 
 .tableau>tbody>tr>th {
     text-align: left;
-}
+} */
 
 .imgInfo {
     width: 90px;
@@ -335,4 +337,48 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+}
+
+/* ------------------------  */
+
+.commande {
+    margin-top: 200px;
+}
+
+
+.wrap-cred {
+    padding: 2.5rem;
+    height: 60vh;
+}
+
+.cardCredit2 {
+    height: 24vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0 0;
+    /* position: relative; */
+}
+
+.cardCredit2 .card-body {
+    width: 100%;
+    max-height: 60px;
+}
+
+.box-mensualites {
+    position: relative;
+    width: 150px;
+    text-align: center;
+}
+
+.resultBox::after {
+    position: absolute;
+    left: 65px;
+    top: 29px;
+    border-top: 14px solid transparent;
+    border-left: 14px solid #00a98a;
+    border-right: 0px solid #00a98a;
+    border-bottom: 14px solid transparent;
+    content: " ";
+    transform: rotate(89deg);
 }

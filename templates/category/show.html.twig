@@ -4,7 +4,37 @@
 
 {% block body %}
 
-    <section class="container my-5">
+
+    <div class="container-fluid commande">
+        <div class="row">
+            <div class="col-md-3 shadow wrap-cred">
+                <p class="text-muted text-center">
+                    <strong>{{ category.titre }}</strong>
+                </p>
+                <h5 class="text-center">Votre simulation</h5>
+                <label for="montant2" class="labelMontant text-danger">Montant souhaité :</label>
+                <div class="input-group mb-2">
+                    <input type="number" name="montant2" id="montant2" class="form-control primary" value="10000" aria-label="montant2">
+                    <div class="input-group-append">
+                        <span class="input-group-text">€</span>
+                    </div>
+                </div>
+
+                <div class="card cardCredit2">
+                    <div class="box-mensualites">
+                        <p class='resultBox success m-0 p-2'>100 <sup>€</sup> / mois</p>
+                    </div>
+                    <input type="range" name="mensualites2" id="mensualites2" class="custom-range" min="1000" max="30000" step="500">
+
+                    <div class="card-body success text-center">
+                        <p class="dure m-0">{{ credits[1].nombresMensualites }} mois</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container">
         <div class="row">
             <div class="jumbotron col-md-4 shadow wrapCredit m-0">
                 <div class="card flex-column justify-content-around p-4 wrapCredit2">
@@ -17,7 +47,7 @@
                 </div>
             </div>
             <div class="col-md-8 d-flex align-items-center">
-                <table class="table table-bordered text-center tableau modal">
+                <table class="table table-bordered text-center">
                     <thead class="bg-success">
                         <tr>
                             <th scope="col" class="bg-white"></th>
@@ -71,6 +101,8 @@
         </div>
     </section>
 
+{{ include('home/indexTemp/indications.html.twig') }}
+
 {% endblock %}
 
 {% block javascripts %}
@@ -83,20 +115,19 @@
             return arrondi;
         }
 
-        $('#send').click(()=> {
-            for (let i = 0; i < $('.montantTotal').length; i++) {
-                const montant = parseInt($('#montant').val())
-                const taux = parseFloat($('.taux')[i].innerHTML);
-                const nbrMensualites = parseInt($('.nbrMensualites')[i].innerHTML);
-                const total = ((montant * taux) / 100) + montant;
-                const mensualites = total / nbrMensualites;
+        // $('#send').click(()=> {
+        //     for (let i = 0; i < $('.montantTotal').length; i++) {
+        //         const montant = parseInt($('#montant').val())
+        //         const taux = parseFloat($('.taux')[i].innerHTML);
+        //         const nbrMensualites = parseInt($('.nbrMensualites')[i].innerHTML);
+        //         const total = ((montant * taux) / 100) + montant;
+        //         const mensualites = total / nbrMensualites;
 
-                $('.mensualites')[i].innerHTML = arrondir(mensualites) + " <sup>&euro;</sup> / mois";
-                $('.montantTotal')[i].innerHTML = total + " <sup>&euro;</sup>";
-                $('.montantEmprunte')[i].innerHTML = montant + " <sup>&euro;</sup>";
-            }
-            $('table').removeClass('modal');
-        })
+        //         $('.mensualites')[i].innerHTML = arrondir(mensualites) + " <sup>&euro;</sup> / mois";
+        //         $('.montantTotal')[i].innerHTML = total + " <sup>&euro;</sup>";
+        //         $('.montantEmprunte')[i].innerHTML = montant + " <sup>&euro;</sup>";
+        //     }
+        // })
         {% if is_granted('ROLE_USER') %}
             $('.data').click((e) => { 
                     
@@ -121,5 +152,31 @@
                 
             });
         {% endif %}
+
+        // $('#montant2').on('input', function() {
+        //     var newval=$(this).val();
+        //     $('.resultBox').text(newval)
+        //     ;
+            
+        // })
+
+        $('#mensualites2').on('input', function() {
+
+                for (let i = 0; i < $('.montantTotal').length; i++) {
+                    const montant = parseInt($(this).val())
+                    const taux = parseFloat($('.taux')[i].innerHTML);
+                    const nbrMensualites = parseInt($('.nbrMensualites')[i].innerHTML);
+                    const total = ((montant * taux) / 100) + montant;
+                    const mensualites = total / nbrMensualites;
+
+                    $('.mensualites')[i].innerHTML = arrondir(mensualites) + " <sup>&euro;</sup> / mois";
+                    $('.montantTotal')[i].innerHTML = total + " <sup>&euro;</sup>";
+                    $('.montantEmprunte')[i].innerHTML = montant + " <sup>&euro;</sup>";
+
+                    $('.resultBox').html(arrondir(mensualites) + " <sup>€</sup> / mois");
+                    $('.dure').html(nbrMensualites + " mois");
+                    $('#montant2').attr('value', $(this).val());                    
+                }
+        })
     </script>
 {% endblock %}
