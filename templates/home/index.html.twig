@@ -468,14 +468,18 @@
                 $(this).children().toggleClass('rotate');
                 $(this).children().css({'transition': 'transform 0.3s ease-in-out'});
             }
+
             if ($(this.nextElementSibling).hasClass('hidden')) {
                 rep.addClass('hidden');
+                rep.slideUp('slow')
+                $(this.nextElementSibling).slideDown('slow');
                 $(this.nextElementSibling).removeClass("hidden");
-                $(this.nextElementSibling).fadeIn("slow");
-            } else { 
-                $(this.nextElementSibling).fadeOut("slow");
+            } 
+            else { 
+                $(this.nextElementSibling).slideUp("slow");
                 $(this.nextElementSibling).addClass("hidden");
             }
+            
         });
         
 

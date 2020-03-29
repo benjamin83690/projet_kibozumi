@@ -284,10 +284,12 @@
 
 .iconC {
     font-size: 25px;
+    cursor: pointer;
 }
 
 .questions {
     padding-left: 10px;
+    cursor: pointer;
 }
 
 .boxFaq {
