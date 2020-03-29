@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Credit;
+use App\Entity\User;
+use App\Entity\Commande;
 use App\Repository\CreditRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,7 +34,6 @@ class HomeController extends AbstractController
         ]);
     }
 
-<<<<<<< Updated upstream
     /**
     * @Route("/ajax/{user}/{id}", name="ajax", methods={"GET"})
     */
@@ -62,12 +63,10 @@ class HomeController extends AbstractController
 
         return $this->json($data);
 
-=======
-    public function menu(CreditRepository $credit)
+    public function menu(CategoryRepository $credit)
     {
         return $this->render('home/menu.html.twig', [
             'credits' => $credit->findAll(),
         ]);
->>>>>>> Stashed changes
     }
 }

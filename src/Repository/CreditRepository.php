@@ -34,10 +34,6 @@ class CreditRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-<<<<<<< Updated upstream
-=======
-    */
->>>>>>> Stashed changes
 
     /*
     public function findOneBySomeField($value): ?Credit
