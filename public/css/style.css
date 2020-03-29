@@ -284,12 +284,55 @@
 
 .iconC {
     font-size: 25px;
+    cursor: pointer;
 }
 
 .questions {
     padding-left: 10px;
+    cursor: pointer;
 }
 
 .boxFaq {
     border: solid 2px #18bc9c;
+}
+
+.contact {
+    width: 150px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 1030;
+}
+
+.contact img {
+    width: 42px;
+}
+
+.reseaux a {
+    margin-left: 10px;
+}
+
+.reseaux {
+    width: 150px;
+}
+
+.fixed-bottom {
+    position: fixed;
+    right: 0;
+    bottom: 44px;
+    z-index: 1030;
+}
+
+footer {
+    height: 200px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
