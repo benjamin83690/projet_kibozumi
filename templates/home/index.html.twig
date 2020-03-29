@@ -461,9 +461,12 @@
         question.on('click', function() {
             if ($(this).children().hasClass('rotate')) {
                 $(this).children().removeClass('rotate')
+                $(this).children().css({'transition': 'transform 0.3s ease-in-out'});
             } else {
                 question.children().removeClass('rotate')
+                question.children().css({'transition': 'transform 0.3s ease-in-out'});
                 $(this).children().toggleClass('rotate');
+                $(this).children().css({'transition': 'transform 0.3s ease-in-out'});
             }
             if ($(this.nextElementSibling).hasClass('hidden')) {
                 rep.addClass('hidden');
@@ -474,6 +477,7 @@
                 $(this.nextElementSibling).addClass("hidden");
             }
         });
+        
 
         
     </script>
