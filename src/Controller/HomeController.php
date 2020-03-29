@@ -76,4 +76,14 @@ class HomeController extends AbstractController
         $entityManager->flush();
         return $this->json($data);
     }
+
+    /**
+     * @Route("/contact", name="home_contact")
+     */
+    public function contact(CategoryRepository $category)
+    {
+        return $this->render('home/contact.html.twig', [
+            'categories' => $category->findAll(),
+        ]);
+    }
 }
