@@ -459,8 +459,12 @@
 
 
         question.on('click', function() {
-            $(this).children().toggleClass('rotate');
-            $(this).children().css({'transition': 'transform 0.3s ease-in-out'});
+            if ($(this).children().hasClass('rotate')) {
+                $(this).children().removeClass('rotate')
+            } else {
+                question.children().removeClass('rotate')
+                $(this).children().toggleClass('rotate');
+            }
             if ($(this.nextElementSibling).hasClass('hidden')) {
                 rep.addClass('hidden');
                 $(this.nextElementSibling).removeClass("hidden");
