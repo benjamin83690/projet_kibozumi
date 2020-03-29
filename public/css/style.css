@@ -276,3 +276,20 @@
 .hidden {
     display: none;
 }
+
+.rotate {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.iconC {
+    font-size: 25px;
+}
+
+.questions {
+    padding-left: 10px;
+}
+
+.boxFaq {
+    border: solid 2px #18bc9c;
+}
