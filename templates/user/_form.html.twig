@@ -1,18 +1,14 @@
 {{ form_start(form) }}
-<<<<<<< Updated upstream
-    <div class="form-group">{{ form_row(form.nom, {'attr':{'class':'form-control',         'placeholder': 'Marley'}}) }}</div>
-    <div class="form-group">{{ form_row(form.prenom, {'attr':{'class':'form-control','placeholder': 'Bob'}}) }}</div>
-    <div class="form-group">{{ form_row(form.email, {'attr':{'class':'form-control','placeholder': 'Bob.marley@gmail.com'}}) }}</div>
-    <div class="form-group">{{ form_row(form.password, {'attr':{'class':'form-control','placeholder': '**********'}}) }}</div>
-    <div class="form-group">{{ form_row(form.telephone, {'attr':{'class':'form-control','placeholder': '0621589875'}}) }}</div>
-    <div class="checkbox mt-2">
-	    <label>
-		    <input type="checkbox" name="_remember_me"> Se souvenir de moi
-	    </label>
-    </div>
-    <button type="submit" class="btn btn-success">Validez</button>
-=======
+
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
->>>>>>> Stashed changes
+
+<div class="form-group">{{ form_row(form.nom, {'attr':{'class':'form-control','placeholder': 'Marley'}}) }}</div>
+<div class="form-group">{{ form_row(form.prenom, {'attr':{'class':'form-control','placeholder': 'Bob'}}) }}</div>
+<div class="form-group">{{ form_row(form.email, {'attr':{'class':'form-control','placeholder': 'Bob.marley@gmail.com'}}) }}</div>
+<div class="form-group">{{ form_row(form.password, {'attr':{'class':'form-control','placeholder': '**********'}}) }}</div>
+<div class="form-group">{{ form_row(form.telephone, {'attr':{'class':'form-control','placeholder': '0621589875'}}) }}</div>
+
+<button type="submit" class="btn btn-success">Validez</button>
+
 {{ form_end(form) }}

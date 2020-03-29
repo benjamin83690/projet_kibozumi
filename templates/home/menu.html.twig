@@ -1,5 +1,5 @@
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Nos prêts </a>
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Credits </a>
     <div class="dropdown-menu" style="">
     {% for credit in credits %}
         <a class="dropdown-item" href="{{ url('home_credit', {id: credit.id}) }}"> {{ credit.titre }}</a>

@@ -35,6 +35,19 @@ class CreditRepository extends ServiceEntityRepository
         ;
     }
 
+
+    // public function findCreditCommandByUserId($value)
+    // {
+    //     return $this->createQueryBuilder('c')
+    //         ->andWhere('c.creditCategory = :val')
+    //         ->setParameter('val', $value)
+    //         ->orderBy('c.id', 'ASC')
+    //         ->setMaxResults(10)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+
     /*
     public function findOneBySomeField($value): ?Credit
     {

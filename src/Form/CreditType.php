@@ -15,9 +15,9 @@ class CreditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('montantEmprunte')
             ->add('mensualites', TextType::class)
             ->add('nombresMensualites')
+            ->add('montantEmprunte')
             ->add('tauxFixe')
             ->add('montantTotal')
             // ->add('updatedAt')

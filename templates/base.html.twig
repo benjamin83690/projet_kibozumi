@@ -2,39 +2,49 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Bienvenue {% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/flatly/bootstrap.min.css">
+        <script src="https://kit.fontawesome.com/5017e290c0.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
-    <body>
+    <body>          
+        <nav class="navbar navbar-expand-lg fixed-top bg-white shadow d-block">
+            <div class="navTop">
+                <p class="text-center text-success m-0">Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.</p>
+                <hr class="mt-1">
+            </div>
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="{{ asset('images/kibozumi.png') }}" alt="logo" class="img-fluid" width="150">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
-            <a class="navbar-brand" href="#">Kibozumi</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarColor02">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('home') }}">Accueil</a>
-                    </li>
-                    {{ render(controller('App\\Controller\\HomeController::menu')) }}
-                    {% if is_granted('ROLE_ADMIN') %}
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href="{{ path('admin_new') }}" class="nav-link btn btn-primary">inscrire un admin</a>
+                            <a class="nav-link text-success" href="{{ url('home') }}">Accueil</a>
                         </li>
-                    {% endif %}
-                    {% if is_granted('ROLE_USER') %}
-                    <li class="nav-item">
-                        <a href="{{ path('app_logout') }}" class="nav-link btn btn-primary">Deconnexion</a>
-                    </li>
-<<<<<<< Updated upstream
+                        <li class="nav-item">
+                            <a class="nav-link text-success" href="{{ url('home') }}">Nous contacter</a>
+                        </li>
+                        {{ render(controller('App\\Controller\\HomeController::menu')) }}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a href="{{ path('admin_new') }}" class="nav-link btn btn-success">inscrire un admin</a>
+                            </li>
+                        {% endif %}
+                        {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item">
+                            <a href="{{ path('app_logout') }}" class="nav-link btn btn-primary">Deconnexion</a>
+                        </li>
+
                     <li class="nav-item">
                         <a href="{{ path('user_show', {id: app.user.id }) }}" class="nav-link btn btn-primary">Profil</a>
                     </li>
-=======
->>>>>>> Stashed changes
                     {% else %}
                     <li class="nav-item">
                         <a href="{{ path('app_login') }}" class="nav-link btn btn-info">connexion</a>
@@ -46,10 +56,27 @@
                 </ul>
             </div>
         </nav>
-<<<<<<< Updated upstream
-        {{ dump(app.user) }}
-=======
->>>>>>> Stashed changes
+                        <li class="nav-item">
+                            <a href="{{ path('user_show', {id: app.user.id }) }}" class="nav-link btn btn-primary">Profil</a>
+                        </li>
+                        {% else %}
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="{{ path('app_login') }}" class="nav-link btn btn-success rounded-pill">Mon espace <i class="far fa-user pl-1"></i></a>
+                        </li>
+                    </ul>
+                        {# <li class="nav-item">
+                            <a href="{{ path('app_login') }}" class="nav-link btn btn-info">connexion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('user_new') }}" class="nav-link btn btn-primary">inscription</a>
+                        </li> #}
+                        {% endif %}
+                </div>
+            </div>
+        </nav>
+        <hr class="m-0 p-0 shadow">
         {% block body %}{% endblock %}
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
