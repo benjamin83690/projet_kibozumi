@@ -43,6 +43,10 @@
 .mb-6 {
     margin-bottom: 4rem;
 }
+.active{
+    background-color: transparent !important;
+    /* color: #B0F4DB !important; */
+}
 
 .mb-7 {
     margin-bottom: 5rem;

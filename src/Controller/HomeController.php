@@ -1,8 +1,5 @@
 <?php
-
 namespace App\Controller;
-
-
 use App\Entity\User;
 use App\Entity\Credit;
 use App\Entity\Category;
@@ -13,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
 class HomeController extends AbstractController
 {
     /**
@@ -25,7 +21,6 @@ class HomeController extends AbstractController
             'categories' => $category->findAll(),
         ]);
     }
-
     // /**
     // * @Route("/credit/{id<\d+>}", name="home_credit", methods={"GET"})
     // */
@@ -36,14 +31,12 @@ class HomeController extends AbstractController
     //         'credits' => $credits->findAll()
     //     ]);
     // }
-
     public function menu(CategoryRepository $category)
     {
         return $this->render('home/menu.html.twig', [
             'categories' => $category->findAll(),
         ]);
     }
-
     /**
     * @Route("/commande/{id}", name="category_show", methods={"GET", "POST"})
     */
@@ -54,7 +47,6 @@ class HomeController extends AbstractController
             'credits' => $credits->findByCategory($category->getId()),
         ]);
     }
-
     /**
     * @Route("/ajax/{user}", name="ajax", methods={"GET"})
     */
@@ -83,5 +75,13 @@ class HomeController extends AbstractController
         $entityManager->persist($commande);
         $entityManager->flush();
         return $this->json($data);
+    }
+
+    /**
+     * @Route("/contact", name="home_contact")
+     */
+    public function contact()
+    {
+        return $this->render('home/contact.html.twig');
     }
 }

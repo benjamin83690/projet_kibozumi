@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controller;
-
 use App\Entity\User;
 use App\Entity\Credit;
 use App\Entity\Category;
@@ -15,8 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-
-
 /**
  * @Route("/admin/category")
  */
@@ -31,7 +27,6 @@ class CategoryController extends AbstractController
             'categories' => $categoryRepository->findAll(),
         ]);
     }
-
     /**
      * @Route("/new", name="category_new", methods={"GET","POST"})
      */
@@ -40,21 +35,17 @@ class CategoryController extends AbstractController
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($category);
             $entityManager->flush();
-
             return $this->redirectToRoute('category_index');
         }
-
         return $this->render('category/new.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}/edit", name="category_edit", methods={"GET","POST"})
      */
@@ -62,19 +53,15 @@ class CategoryController extends AbstractController
     {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('category_index');
         }
-
         return $this->render('category/edit.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="category_delete", methods={"DELETE"})
      */
@@ -85,7 +72,6 @@ class CategoryController extends AbstractController
             $entityManager->remove($category);
             $entityManager->flush();
         }
-
         return $this->redirectToRoute('category_index');
     }
 }

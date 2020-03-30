@@ -29,7 +29,7 @@
                             <a class="nav-link text-success" href="{{ url('home') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-success" href="{{ url('home') }}">Nous contacter</a>
+                            <a class="nav-link text-success" href="{{ url('home_contact') }}">Nous contacter</a>
                         </li>
                         {{ render(controller('App\\Controller\\HomeController::menu')) }}
                         {% if is_granted('ROLE_ADMIN') %}
