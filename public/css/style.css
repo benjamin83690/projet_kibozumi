@@ -26,7 +26,7 @@
 .btn-color {
     background: #076f65;
     border: none;
-    color: #fff;
+    color: #fff !important;
 }
 
 .active2 {
@@ -42,6 +42,10 @@
 
 .mb-6 {
     margin-bottom: 4rem;
+}
+
+.mb-7 {
+    margin-bottom: 5rem;
 }
 
 
@@ -79,17 +83,35 @@
 
 .totalM1 {
     background-color: #B0F4DB !important;
-    color: #00A98A !important;
+    color: #00684D !important;
+    font-weight: bold;
+    text-shadow: 0px 1px 3px #000000c7;
 }
 
 .totalM2 {
-    background-color: #00A98A !important;
+    background-color: #00684D !important;
     color: #B0F4DB !important;
+    font-weight: bold;
+    text-shadow: 0px 1px 3px #000000c7;
 }
 
 .totalM3 {
-    background-color: #00684D !important;
-    color: #00A98A !important;
+    background-color: #00A98A !important;
+    color: #fff !important;
+    font-weight: bold;
+    text-shadow: 0px 1px 3px #000000c7;
+}
+
+.offre1 {
+    border-bottom: solid 4px #B0F4DB !important;
+}
+
+.offre2 {
+    border-bottom: solid 4px #00684D !important;
+}
+
+.offre3 {
+    border-bottom: solid 4px #00A98A !important;
 }
 
 
@@ -348,7 +370,11 @@ footer {
 
 .wrap-cred {
     padding: 2.5rem;
-    height: 60vh;
+    height: 70vh;
+    position: fixed;
+    background: #fff;
+    z-index: 999;
+    top: 140px;
 }
 
 .cardCredit2 {
@@ -358,6 +384,11 @@ footer {
     align-items: center;
     padding: 1rem 0 0;
     /* position: relative; */
+}
+
+.cardCredit3 {
+    position: relative;
+    margin-left: 30% !important;
 }
 
 .cardCredit2 .card-body {
@@ -381,4 +412,16 @@ footer {
     border-bottom: 14px solid transparent;
     content: " ";
     transform: rotate(89deg);
+}
+
+.wrapUp-table {
+    overflow: hidden;
+}
+
+.cel {
+    padding: 1.5rem;
+}
+
+.cel2 {
+    padding: 0 1.5rem;
 }

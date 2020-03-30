@@ -4,8 +4,16 @@
 
 {% block body %}
 
+    {% block stylesheets %}
+        <style>
+            .cCommande {
+                margin: 0 30% !important;
+            }
+        </style>
+    {% endblock %}
 
-    <div class="container-fluid commande">
+
+    <div class="container-fluid commande mb-7">
         <div class="row">
             <div class="col-md-3 shadow wrap-cred">
                 <p class="text-muted text-center">
@@ -22,7 +30,7 @@
 
                 <div class="card cardCredit2">
                     <div class="box-mensualites">
-                        <p class='resultBox success m-0 p-2'>100 <sup>€</sup> / mois</p>
+                        <p class='resultBox success m-0 p-2'>{{ credits[1].mensualites }}<sup>€</sup> / mois</p>
                     </div>
                     <input type="range" name="mensualites2" id="mensualites2" class="custom-range" min="1000" max="30000" step="500">
 
@@ -31,75 +39,92 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-7 m-auto cardCredit3">
+                <h3 class="text-center">Comparer et choisir l'offre la plus adaptée à votre projet</h3>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3 p-3 text-center text-muted"></div>
+                    {% for credit in credits %}
+                    <div class="col-md-3 p-3 text-center border border-bottom offre{{loop.index}}">
+                        <p>Formule n°{{ loop.index }}</p>
+                        {% if is_granted('ROLE_USER') %}
+                            <a class="btn btn-color rounded-pill data" href="{{ path('user_show', {id: app.user.id}) }}" id="{{credit.id}}">Choisir</a>
+                        {% else %}
+                            <a class="btn btn-color rounded-pill" href="{{ path('app_login') }}">Choisir</a>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="wrapUp-table border my-2">
+                    <div class="row">
+                        <div class="col-md-3 text-muted cel border-right">
+                            <p>Montant emprunté</p>
+                        </div>
+                        {% for credit in credits %}
+                        <div class="col-md-3 text-center cel border-right montantEmprunte active{{ loop.index }}">
+                            {{ credit.montantEmprunte }} <sup>€</sup>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row border-top">
+                        <div class="col-md-3 text-muted cel border-right">
+                            <p>Mensualités</p>
+                        </div>
+                        {% for credit in credits %}
+                        <div class="col-md-3 text-center cel border-right active{{ loop.index }}">
+                            <small class="text-muted">à partir de</small> <br>
+                            <p class="mensualites" id="mensualites{{credit.id}}">{{ credit.mensualites }}</p>
+                            <sup>€</sup>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row border-top">
+                        <div class="col-md-3 text-muted cel border-right">
+                            <p>Durée du crédit</p>
+                        </div>
+                        {% for credit in credits %}
+                        <div class="col-md-3 text-center cel border-right nbrMensualites active{{ loop.index }}">
+                            {{ credit.nombresMensualites }} / mois
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row border-top">
+                        <div class="col-md-3 text-muted cel border-right">
+                            <p>Taux Fixe</p>
+                        </div>
+                        {% for credit in credits %}
+                        <div class="col-md-3 text-center cel border-right active{{ loop.index }}">
+                            <p class="taux">{{ credit.tauxFixe }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="wrapDown-table border">
+                    <div class="row">
+                        <div class="col-md-3 d-flex align-items-center cel2 border-right">
+                            <p>Montant total dû</p>
+                        </div>
+                        {% for credit in credits %}
+                        <div class="col-md-3 text-center totalM{{ loop.index }} border-right border-white">
+                            <small>à partir de</small> <br>
+                            <p class="montantTotal m-0" id="montantTotal{{credit.id}}">
+                                {{ credit.montantTotal }}
+                            </p>
+                            <small>dont 0 € de frais de dossier</small>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <section class="container">
-        <div class="row">
-            <div class="jumbotron col-md-4 shadow wrapCredit m-0">
-                <div class="card flex-column justify-content-around p-4 wrapCredit2">
-                    <h4 class="text-center text-danger">Votre simulation de : {{ category.titre }}</h4>
-                    <div class="form-group">
-                        <label for="montant" class="labelMontant text-danger">Montant du prêt :</label>
-                        <input type="number" name="montant" id="montant" class="form-control" value="10000">
-                    </div>
-                    <button id="send" class="btn btn-success btn-block">Simuler</button>
-                </div>
-            </div>
-            <div class="col-md-8 d-flex align-items-center">
-                <table class="table table-bordered text-center">
-                    <thead class="bg-success">
-                        <tr>
-                            <th scope="col" class="bg-white"></th>
-                            {% for credit in credits %}
-                            <th scope="col">
-                                Formule {{ loop.index }}
-                                <br>
-                                {% if is_granted('ROLE_USER') %}
-                                    <a class="btn btn-color rounded-pill data" id="{{credit.id}}" href="{{ path('user_show', {id: app.user.id}) }}">Choisir</a>
-                                {% else %}
-                                    <a class="btn btn-color rounded-pill" href="{{ path('app_login') }}">Choisir</a>
-                                {% endif %}
-                            </th>
-                            {% endfor %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                            <tr>
-                                <th scope="row">Montant emprunté</th>
-                                {% for credit in credits %}
-                                    <td class="montantEmprunte active{{ loop.index }}">{{ credit.montantEmprunte }}</td>
-                                {% endfor %}
-                            </tr>
-                        <tr>
-                            <th scope="row">Mensualité</th>
-                            {% for credit in credits %}
-                                <td class="mensualites active{{ loop.index }}" id="mensualites{{credit.id}}">{{ credit.mensualites }} mois</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <th scope="row">Nombres Mensualité</th>
-                            {% for credit in credits %}
-                                <td class="nbrMensualites active{{ loop.index }}">{{ credit.nombresMensualites }} mois</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <th scope="row">Taux Fixe</th>
-                            {% for credit in credits %}
-                                <td class="taux active{{ loop.index }}">{{ credit.tauxFixe }} %</td>
-                            {% endfor %}
-                        </tr>
-                        <tr>
-                            <th scope="row">Montant Total</th>
-                            {% for credit in credits %}
-                                <td class="montantTotal totalM{{ loop.index }}" id="montantTotal{{credit.id}}">{{ credit.montantTotal }}</td>
-                            {% endfor %}
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+    
 
 {{ include('home/indexTemp/indications.html.twig') }}
 
@@ -115,25 +140,12 @@
             return arrondi;
         }
 
-        // $('#send').click(()=> {
-        //     for (let i = 0; i < $('.montantTotal').length; i++) {
-        //         const montant = parseInt($('#montant').val())
-        //         const taux = parseFloat($('.taux')[i].innerHTML);
-        //         const nbrMensualites = parseInt($('.nbrMensualites')[i].innerHTML);
-        //         const total = ((montant * taux) / 100) + montant;
-        //         const mensualites = total / nbrMensualites;
-
-        //         $('.mensualites')[i].innerHTML = arrondir(mensualites) + " <sup>&euro;</sup> / mois";
-        //         $('.montantTotal')[i].innerHTML = total + " <sup>&euro;</sup>";
-        //         $('.montantEmprunte')[i].innerHTML = montant + " <sup>&euro;</sup>";
-        //     }
-        // })
         {% if is_granted('ROLE_USER') %}
             $('.data').click((e) => { 
                     
                 $.ajax({
                     data: {
-                        montant: $('#montant').val(),
+                        montant: $('#montant2').val(),
                         mensualites : $('#mensualites' + e.target.getAttribute('id'))[0].innerHTML,
                         montantTotal: $('#montantTotal'+ e.target.getAttribute('id'))[0].innerHTML,
                         creditId: e.target.getAttribute('id')
@@ -153,30 +165,23 @@
             });
         {% endif %}
 
-        // $('#montant2').on('input', function() {
-        //     var newval=$(this).val();
-        //     $('.resultBox').text(newval)
-        //     ;
-            
-        // })
+        $('#mensualites2').on('input', function() {            
 
-        $('#mensualites2').on('input', function() {
+            for (let i = 0; i < $('.montantTotal').length; i++) {
+                const montant = parseInt($(this).val())
+                const taux = parseFloat($('.taux')[i].innerHTML);
+                const nbrMensualites = parseInt($('.nbrMensualites')[i].innerHTML);
+                const total = ((montant * taux) / 100) + montant;
+                const mensualites = total / nbrMensualites;
 
-                for (let i = 0; i < $('.montantTotal').length; i++) {
-                    const montant = parseInt($(this).val())
-                    const taux = parseFloat($('.taux')[i].innerHTML);
-                    const nbrMensualites = parseInt($('.nbrMensualites')[i].innerHTML);
-                    const total = ((montant * taux) / 100) + montant;
-                    const mensualites = total / nbrMensualites;
+                $('.mensualites')[i].innerHTML = arrondir(mensualites);
+                $('.montantTotal')[i].innerHTML = total;
+                $('.montantEmprunte')[i].innerHTML = montant;
 
-                    $('.mensualites')[i].innerHTML = arrondir(mensualites) + " <sup>&euro;</sup> / mois";
-                    $('.montantTotal')[i].innerHTML = total + " <sup>&euro;</sup>";
-                    $('.montantEmprunte')[i].innerHTML = montant + " <sup>&euro;</sup>";
-
-                    $('.resultBox').html(arrondir(mensualites) + " <sup>€</sup> / mois");
-                    $('.dure').html(nbrMensualites + " mois");
-                    $('#montant2').attr('value', $(this).val());                    
-                }
+                $('.resultBox').html(arrondir(mensualites));
+                $('.dure').html(nbrMensualites);
+                $('#montant2').attr('value', $(this).val());                    
+            }
         })
     </script>
 {% endblock %}
