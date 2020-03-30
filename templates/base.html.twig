@@ -29,7 +29,7 @@
                             <a class="nav-link text-success" href="{{ url('home') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-success" href="{{ url('home') }}">Nous contacter</a>
+                            <a class="nav-link text-success" href="{{ url('home_contact') }}">Nous contacter</a>
                         </li>
                         {{ render(controller('App\\Controller\\HomeController::menu')) }}
                         {% if is_granted('ROLE_ADMIN') %}
@@ -63,9 +63,11 @@
         </nav>
         <hr class="m-0 p-0 shadow">
         {% block body %}{% endblock %}
+        {{ include('home/footer.html.twig') }}
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

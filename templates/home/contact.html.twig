@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+{% block title %}Contact{% endblock %}
+{% block body %}
+
+<div class="container wrap-contact">
+    <h1 class="text-logo">Contact</h1>
+    <nav>
+        <ul class="nav nav-tabs nav-pills" role="tablist">
+            <li role="presentation" class="nav-item"><a class="nav-link active success" id="1" href="#email" role="tab"
+                    data-toggle="tab"><i class="fas fa-at">
+                        <h3>Par Email</h3>
+                    </i>
+                    <p>Contacter votre agence par email</p></a></li>
+            <li role="presentation" class="nav-item"><a class="nav-link" id="2" href="#telephone" role="tab"
+                    data-toggle="tab"><i class="fas fa-phone-alt"><h3>Par téléphone</h3></i><p>Contacter un conseiller par téléphone</p></a></li>
+            <li role="presentation" class="nav-item"><a class="nav-link" id="3" href="#adresse" role="tab"
+                    data-toggle="tab"><i class="fas fa-map-marker-alt"><h3>En agence</h3></i><p>Prendre rendez-vous avec un conseiller en agence</p></a></li>
+        </ul>
+    </nav>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="email" role="tabpanel" aria-labelledby="1">
+            <div class="row">
+                <div class="col-sm-6 col-md-6 m-auto">
+                    <div class="jumbotron">
+                        <div class="form-group">
+                            <select class="custom-select text-center" id="inputGroupSelect01">
+                                <option selected>Votre demande</option>
+                                <option value="1">Réaliser un nouveau projet</option>
+                                <option value="2">Service client</option>
+                                <option value="3">Formuler des remarques</option>
+                            </select>
+                        </div>
+                        <h5>1:Vous</h5>
+                        <hr>
+                       
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadioInline1" name="customRadioInline1"
+                                    class="custom-control-input">
+                                <label class="custom-control-label" for="customRadioInline1"><i
+                                        class="fas fa-user-circle"></i></label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadioInline2" name="customRadioInline1"
+                                    class="custom-control-input">
+                                <label class="custom-control-label" for="customRadioInline2"><i
+                                        class="far fa-user-circle"></i></label>
+                            </div>
+                        <div class="text-center">   
+                            <div class="form-group">
+                                <input type="text" name="nom" id="nom" placeholder="Nom" class="w-75 p-2"><br>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="prenom" id="prenom" placeholder="Prenom" class="w-75 p-2"><br>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" name="date" id="date" placeholder="Date de naissance" class="w-75 p-2">
+                            </div>                            
+                        
+                        </div>
+                        <h5>2:Vos coordonnées</h5>
+                        <hr>
+                        <div class="text-center">
+                            <div class="form-group">
+                                <input type="number" name="cp" id="cp" placeholder="Votre code postal" class="w-75 p-2"><br>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="tel" id="tel" placeholder="Téléphone" class="w-75 p-2"><br>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="mail" id="mail" placeholder="Email" class="w-75 p-2">
+                            </div>
+                        </div>
+                        <h5>3:Votre message</h5>
+                        <hr>
+                        <div class="form-group">
+                            <textarea  class="form-control" name="message" id="message" cols="30" rows="10"
+                            placeholder="Detailez-nous votre problème ou votre demande">
+                            </textarea><br>
+                        </div>  
+                        <button class="btn btn-info" type="submit">Envoyer</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="tab-pane fade" id="telephone" role="tabpanel" aria-labelledby="2">
+            <div class="row">
+                <div class="col-sm-6 col-md-6 m-auto">
+                    <div class="jumbotron">
+                        <h3 class="text-center">Nous appeller</h3>
+                        <div class="text-center">
+                            <p>Nos conseiller sont à votre écoute au:</p>
+                            <h4>04.94.85.14.36</h4>
+                        </div>
+                        <hr>
+                        <h3 class="text-center">Nous pouvons vous rappellez</h3>
+                        <div class="text-center">
+                            <p>Indiquez-nous votre numéro de téléphone fixe ou mobile, notre équipe va vous contacter immédiatement.</p>
+                            <button class="btn btn-info rounded">Etre rappeller</button>
+                        </div>
+                    </div>
+                </div>   
+            </div>
+        </div>
+        <div class="tab-pane fade" id="adresse" role="tabpanel" aria-labelledby="3">
+            <div class="row">
+                <div class="col-sm-6 col-md-6 m-auto">
+                    <div class="jumbotron">
+                        <h3 class="text-center">Notre agence</h3>
+                        <div class="text-center">
+                            <h4> Aix en Provence</h4>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107722.51380086449!2d5.3533009430200185!3d43.529061520561044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c98da304b91259%3A0x5cb953bec8b688a3!2sAix-en-Provence!5e0!3m2!1sfr!2sfr!4v1585579178444!5m2!1sfr!2sfr" width="400" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>
+{% endblock %}

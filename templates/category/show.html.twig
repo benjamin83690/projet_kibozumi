@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}{{ parent() }} sur nos Crédit{% endblock %}
-
 {% block body %}
 
     <section class="container my-5">
@@ -70,11 +68,8 @@
             </div>
         </div>
     </section>
-
 {% endblock %}
-
 {% block javascripts %}
-    
     <script>
         function arrondir(nombre) {
             let arrondi = nombre*100;          
@@ -82,7 +77,6 @@
             arrondi = arrondi/100;
             return arrondi;
         }
-
         $('#send').click(()=> {
             for (let i = 0; i < $('.montantTotal').length; i++) {
                 const montant = parseInt($('#montant').val())
@@ -99,7 +93,6 @@
         })
         {% if is_granted('ROLE_USER') %}
             $('.data').click((e) => { 
-                    
                 $.ajax({
                     data: {
                         montant: $('#montant').val(),
@@ -118,7 +111,6 @@
                         console.log(data);
                     }
                 });
-                
             });
         {% endif %}
     </script>

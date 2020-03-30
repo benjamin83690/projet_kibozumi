@@ -14,7 +14,7 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('imageName')
+            // ->add('imageName')
             ->add('imageFile', VichImageType::class, ['required'=> false])
         ;
     }
