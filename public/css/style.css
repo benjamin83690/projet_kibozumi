@@ -114,6 +114,33 @@
     border-bottom: solid 4px #00A98A !important;
 }
 
+.color-commande1 {
+    background-color: #0092BB !important;
+    color: lightblue;
+}
+
+.color-commande2 {
+    background-color: #132A40 !important;
+    color: #fff;
+}
+
+.color-commande3 {
+    background-color: #1a7b7b !important;
+    color: #fff;
+}
+
+.bg-commande1 {
+    background-color: #0092BB !important;
+}
+
+.bg-commande2 {
+    background-color: #132A40 !important;
+}
+
+.bg-commande3 {
+    background-color: #1a7b7b !important;
+}
+
 
 /* ------------------------------------------ */
 
@@ -141,9 +168,7 @@
     text-align: center;
     padding: 0.7em;
     position: absolute;
-    /* background-color: #125447; */
     background-color: #00684D;
-    ;
     right: -14px;
     top: 0;
     font-size: small;
@@ -218,14 +243,6 @@
     background: transparent;
     border: none;
 }
-
-/* .tableau {
-    border-collapse: unset !important;
-}
-
-.tableau>tbody>tr>th {
-    text-align: left;
-} */
 
 .imgInfo {
     width: 90px;
@@ -364,7 +381,8 @@ footer {
 /* ------------------------  */
 
 .commande {
-    margin-top: 200px;
+    margin-top: 165px;
+    padding: 1rem;
 }
 
 
@@ -375,6 +393,17 @@ footer {
     background: #fff;
     z-index: 999;
     top: 140px;
+}
+
+@media screen and (max-width: 768px) {
+    .wrap-cred {
+        position: static;
+        height: 55vh;
+    }
+
+    .cardCredit3 {
+        display: none;
+    }
 }
 
 .cardCredit2 {
@@ -402,13 +431,37 @@ footer {
     text-align: center;
 }
 
-.resultBox::after {
+.container-commande1::after {
     position: absolute;
     left: 65px;
     top: 29px;
     border-top: 14px solid transparent;
-    border-left: 14px solid #00a98a;
-    border-right: 0px solid #00a98a;
+    border-left: 14px solid #0092BB;
+    border-right: 0px solid #0092BB;
+    border-bottom: 14px solid transparent;
+    content: " ";
+    transform: rotate(89deg);
+}
+
+.container-commande2::after {
+    position: absolute;
+    left: 65px;
+    top: 29px;
+    border-top: 14px solid transparent;
+    border-left: 14px solid #132A40;
+    border-right: 0px solid #132A40;
+    border-bottom: 14px solid transparent;
+    content: " ";
+    transform: rotate(89deg);
+}
+
+.container-commande3::after {
+    position: absolute;
+    left: 65px;
+    top: 29px;
+    border-top: 14px solid transparent;
+    border-left: 14px solid #518e9cfc;
+    border-right: 0px solid #518e9cfc;
     border-bottom: 14px solid transparent;
     content: " ";
     transform: rotate(89deg);
@@ -424,4 +477,12 @@ footer {
 
 .cel2 {
     padding: 0 1.5rem;
+}
+
+.titleCat{
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 125px;
+    padding-left: 350px;
 }

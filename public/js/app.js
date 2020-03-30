@@ -24,8 +24,7 @@ $(function() {
         else { 
             $(this.nextElementSibling).slideUp("slow");
             $(this.nextElementSibling).addClass("hidden");
-        }
-            
+        }          
     });
 
 });
