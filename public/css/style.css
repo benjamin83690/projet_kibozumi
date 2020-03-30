@@ -41,6 +41,10 @@
 .mb-6 {
     margin-bottom: 4rem;
 }
+.active{
+    background-color: transparent !important;
+    /* color: #B0F4DB !important; */
+}
 
 
 /* ---------- bg -------------- */
@@ -335,4 +339,9 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+}
+/* page contact */
+
+.wrap-contact{
+    margin-top: 200px;
 }
