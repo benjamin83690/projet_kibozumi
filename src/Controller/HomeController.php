@@ -80,10 +80,8 @@ class HomeController extends AbstractController
     /**
      * @Route("/contact", name="home_contact")
      */
-    public function contact(CategoryRepository $category)
+    public function contact()
     {
-        return $this->render('home/contact.html.twig', [
-            'categories' => $category->findAll(),
-        ]);
+        return $this->render('home/contact.html.twig');
     }
 }
