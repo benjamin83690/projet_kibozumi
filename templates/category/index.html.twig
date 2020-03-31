@@ -1,35 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}Category index
+{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.titre }}</td>
-                <td>
-                    <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
+<div class="container mt-7">
+    <table class="table table-responsive table-hover">
+        <h1>Liste des catégories</h1>
+			<thead class="success">
+				<tr>
+					<th class="border">Id</th>
+					<th class="border">Titre</th>
+					<th class="border"></th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				{% for category in categories %}
+					<tr>
+						<td width="150">{{ category.id }}</td>
+						<td width="250">{{ category.titre }}</td>
+						
+                        <td width="250" class="text-center">
+						<a class="btn btn-primary" href="{{ path('category_show', {'id': category.id}) }}">Voir</a>
+						<a class="btn btn-secondary" href="{{ path('category_edit', {'id': category.id}) }}">Modifier</a>
+                        </td>
+                    </tr>
+				</td>
+			</tbody>
+		</tr>
+	{% else %}
+		<tr>
+			<td colspan="9">no records found</td>
+		</tr>
+	{% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('category_new') }}">Create new</a>
-{% endblock %}
+</div>
+<a class="btn btn-success" href="{{ path('category_new') }}">Create new</a>{% endblock %}
