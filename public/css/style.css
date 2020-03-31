@@ -42,6 +42,18 @@
     margin-top: 145px;
 }
 
+.mb-6 {
+    margin-bottom: 150px !important;
+}
+
+.mb-7 {
+    margin-bottom: 200px !important;
+}
+
+.mb-8 {
+    margin-bottom: 350px !important;
+}
+
 /* ---------------------------------- */
 
 .mb-6 {
@@ -457,8 +469,8 @@ footer {
     left: 65px;
     top: 29px;
     border-top: 14px solid transparent;
-    border-left: 14px solid #518e9cfc;
-    border-right: 0px solid #518e9cfc;
+    border-left: 14px solid #1a7b7b;
+    border-right: 0px solid #1a7b7b;
     border-bottom: 14px solid transparent;
     content: " ";
     transform: rotate(89deg);

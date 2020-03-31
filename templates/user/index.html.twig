@@ -1,48 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}User index
+{% endblock %}
 
 {% block body %}
-<div class="container mt-7">
-        <div class="row">
-            
-                <h4>Liste des utilisateurs</h4>
-            <table class="table table-responsive table-hover">
-                <thead class="bg-success">
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Telephone</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.prenom }}</td>
-                <td>{{ user.telephone }}</td>
-                <td>
-                    <a class='btn btn-secondary' href="{{ path('user_show', {'id': user.id}) }}">Voir</a>
-                    <a class='btn btn-primary' href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
-</div>
+	<div class="container mt-7">
+		<div class="row">
 
+			<h4>Liste des utilisateurs</h4>
+			<table class="table table-responsive table-hover">
+				<thead class="bg-success">
+					<tr>
+						<th>Id</th>
+						<th>Email</th>
+						<th>Roles</th>
+						<th>Nom</th>
+						<th>Prenom</th>
+						<th>Telephone</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<td>{{ user.id }}</td>
+							<td>{{ user.email }}</td>
+							<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+							<td>{{ user.nom }}</td>
+							<td>{{ user.prenom }}</td>
+							<td>{{ user.telephone }}</td>
+							<td>
+								<a class='btn btn-secondary' href="{{ path('user_show', {'id': user.id}) }}">Voir</a>
+								<a class='btn btn-primary' href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="8">no records found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	    <a class='btn btn-success' href="{{ path('user_new') }}">Créer un nouvel utilisateur</a>
+	</div>
 
-    <a class='btn btn-success' href="{{ path('user_new') }}">Créer un nouvel utilisateur</a>
+	<div class="mb-8"></div>
 {% endblock %}
