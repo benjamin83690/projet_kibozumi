@@ -21,22 +21,14 @@ class HomeController extends AbstractController
             'categories' => $category->findAll(),
         ]);
     }
-    // /**
-    // * @Route("/credit/{id<\d+>}", name="home_credit", methods={"GET"})
-    // */
-    // public function credit(Credit $credit, CreditRepository $credits)
-    // {
-    //     return $this->render('home/credit.html.twig', [
-    //         'credit' => $credit,
-    //         'credits' => $credits->findAll()
-    //     ]);
-    // }
+    
     public function menu(CategoryRepository $category)
     {
         return $this->render('home/menu.html.twig', [
             'categories' => $category->findAll(),
         ]);
     }
+
     /**
     * @Route("/commande/{id}", name="category_show", methods={"GET", "POST"})
     */
@@ -47,6 +39,7 @@ class HomeController extends AbstractController
             'credits' => $credits->findByCategory($category->getId()),
         ]);
     }
+    
     /**
     * @Route("/ajax/{user}", name="ajax", methods={"GET"})
     */

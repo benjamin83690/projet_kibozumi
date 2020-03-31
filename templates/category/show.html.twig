@@ -271,62 +271,36 @@
                 const total = ((montant * taux) / 100) + montant;
                 const mensualites = total / nbrMensualites;
                 
+                const mens = arrondir($('.mensualites2')[1].innerHTML);
+                const nbrMens = $('.nbrMensualites')[1].innerHTML;
 
                 $('.mensualites')[i].innerHTML = arrondir(mensualites);
                 $('.montantTotal')[i].innerHTML = total;
                 $('.montantEmprunte')[i].innerHTML = montant;
 
-                $('.resultBox').html(arrondir(mensualites) + "<sup>€</sup> / mois");
-                $('.dure').html(nbrMensualites + " mois");
-                $('#montant').attr('value', $(this).val());                    
+                $('.resultBox').html(parseFloat(mens) + "<sup>€</sup> / mois");
+                $('.dure').html(parseInt(nbrMens) + " mois");
+                $('#montant').attr('value', $(this).val()); 
             }
 
-            for (let j = 0; j < $('.carousel-item').length; j++) {
-                // console.log($('.carousel-item')[j]);
-                
-                
+            for (let j = 0; j < $('.carousel-item').length; j++) {                               
                 const montant2 = parseInt($(this).val())
                 const taux2 = parseFloat($('.taux2')[j].innerHTML);
                 const nbrMensualites2 = parseInt($('.nbrMensualites2')[j].innerHTML);
                 const total2 = ((montant2 * taux2) / 100) + montant2;
                 const mensualites2 = total2 / nbrMensualites2;
-                // console.log(taux2);
-                // console.log(nbrMensualites2);
-                // console.log(total2);
-                // console.log(mensualites2);
-                
+
+                const mens2 = arrondir($('.mensualites2')[1].innerHTML);
+                const nbrMens2 = $('.nbrMensualites')[1].innerHTML;                
 
                 $('.mensualites2')[j].innerHTML = arrondir(mensualites2);
                 $('.montantTotal2')[j].innerHTML = total2;
                 $('.montantEmprunte2')[j].innerHTML = montant2;
-                
 
-                $('.resultBox').text(arrondir(mensualites2));
-                $('.dure').text(nbrMensualites2 + " mois");
-                $('#montant').attr('value', $(this).val());                    
+                $('.resultBox').html(parseFloat(mens2) + "<sup>€</sup> / mois");
+                $('.dure').html(parseInt(nbrMens2) + " mois");
+                $('#montant').attr('value', $(this).val());                     
             }
         })
-
-        // $('#tarif').on('input', function() {            
-        //     console.log("coucou");
-
-        //     for (let i = 0; i < $('.montantTotal2').length; i++) {
-        //         const montant = parseInt($(this).val())
-        //         const taux = parseFloat($('.taux2')[i].innerHTML);
-        //         const nbrMensualites = parseInt($('.nbrMensualites2')[i].innerHTML);
-        //         const total = ((montant * taux) / 100) + montant;
-        //         const mensualites = total / nbrMensualites;
-                
-
-        //         $('.mensualites2')[i].html(arrondir(mensualites));
-        //         $('.montantTotal2')[i].html(total);
-        //         $('.montantEmprunte2')[i].html(montant);
-                
-
-        //         $('.resultBox').text(arrondir(mensualites));
-        //         $('.dure').text(nbrMensualites + " mois");
-        //         $('#montant2').attr('value', $(this).val());                    
-        //     }
-        // })
     </script>
 {% endblock %}
