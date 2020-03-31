@@ -7,7 +7,7 @@
 
     {{ include('credit/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <button class="btn btn-success" href="{{ path('credit_index') }}">Retour à la liste des crédits</button>
+    <a class="btn btn-success" href="{{ path('credit_index') }}">Retour à la liste des crédits</a>
 
     {{ include('credit/_delete_form.html.twig') }}
 {% endblock %}
