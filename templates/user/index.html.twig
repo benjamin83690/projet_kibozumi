@@ -3,7 +3,7 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container mt-7">
         <div class="row">
             
                 <h4>Liste des utilisateurs</h4>
@@ -31,8 +31,8 @@
                 <td>{{ user.prenom }}</td>
                 <td>{{ user.telephone }}</td>
                 <td>
-                    <button class='btn btn-info' href="{{ path('user_show', {'id': user.id}) }}">show</button>
-                    <button class='btn btn-warning' href="{{ path('user_edit', {'id': user.id}) }}">edit</button>
+                    <a class='btn btn-info' href="{{ path('user_show', {'id': user.id}) }}">show</a>
+                    <a class='btn btn-warning' href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -46,5 +46,5 @@
 </div>
 
 
-    <button class='btn btn-success' href="{{ path('user_new') }}">Créer un nouvel utilisateur</button>
+    <a class='btn btn-success' href="{{ path('user_new') }}">Créer un nouvel utilisateur</a>
 {% endblock %}

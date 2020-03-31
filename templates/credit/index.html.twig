@@ -30,8 +30,8 @@
                 <td>{{ credit.montantTotal }}€</td>
                 <td>{{ credit.updatedAt ? credit.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <button class="btn btn-primary" href="{{ path('credit_show', {'id': credit.id}) }}">Voir</button>
-                    <button class="btn btn-secondary"  href="{{ path('credit_edit', {'id': credit.id}) }}">Modifier</button>
+                    <a class="btn btn-primary" href="{{ path('credit_show', {'id': credit.id}) }}">Voir</a>
+                    <a class="btn btn-secondary"  href="{{ path('credit_edit', {'id': credit.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -42,5 +42,5 @@
         </tbody>
     </table>
 
-    <button class="btn btn-success" href="{{ path('credit_new') }}">Créer un nouveau crédit</button>
+    <a class="btn btn-success" href="{{ path('credit_new') }}">Créer un nouveau crédit</a>
 {% endblock %}
