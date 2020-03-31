@@ -32,57 +32,17 @@
 </section>
 
 {# indications sur kibozumi #}
-<section class="container p-0 mb-5">
-        <h2 class="text-center font-weight-bold text-success pb-5">Kibozumi rend vos projets plus Smart</h2>
-    <div class="row">
-        <div class="col-md-3 text-center d-flex flex-column align-items-center">
-            <div class="imgInfo">
-                <img src="{{ asset('images/icon-personne.png') }}" alt="icon-personne">
-            </div>
-            <h4 class="my-4 font-weight-bold">Seul(e) ou accompagné(e)</h4>
-            <p>
-                Bénéficiez d'un accompagnement personnalisé, souscrivez à votre crédit en ligne(1) ou avec l'aide de nos conseillers.
-            </p>
-        </div>
-        <div class="col-md-3 text-center d-flex flex-column align-items-center">
-            <div class="imgInfo">
-                <img src="{{ asset('images/icon-time.png') }}" alt="icon-personne">
-            </div>
-            <h4 class="my-4 font-weight-bold">Une réponse de principe immédiate</h4>
-            <p>
-                N'attendez plus pour concrétiser vos projets, obtenez votre réponse de principe en 5 minutes.
-            </p>
-        </div>
-        <div class="col-md-3 text-center d-flex flex-column align-items-center">
-            <div class="imgInfo">
-                <img src="{{ asset('images/icon-smile.png') }}" alt="icon-personne">
-            </div>
-            <h4 class="my-4 font-weight-bold">Une gestion simplifiée</h4>
-            <p>
-                Gérez votre prêt et vos remboursements facilement depuis votre espace client.
-            </p>
-        </div>
-        <div class="col-md-3 text-center d-flex flex-column align-items-center">
-            <div class="imgInfo">
-                <img src="{{ asset('images/icon-flexible.png') }}" alt="icon-personne">
-            </div>
-            <h4 class="my-4 font-weight-bold">100% flexible</h4>
-            <p>
-                Mettez en pause vos mensualités ou adaptez leurs montants pour faire face aux imprévus.
-            </p>
-        </div>
-    </div>
-</section>
+{{ include('home/indexTemp/indications.html.twig') }}
 
 {# section projet #}
 <section class="container-fluid success projet">
     <h2 class="text-center font-weight-bold pb-5 pt-3">Kibozumi vous aide à concrétiser vos envies</h2>
     <h4 class="text-center font-weight-bold pb-4">Quel est votre projet ?</h4>
     <div class="container p-0">
-        <div class="row justify-content-around">
+        <div class="row justify-content-around rowProjet">
             {% for categorie in categories %}
             <a href="{{ path('category_show', {id: categorie.id}) }}">
-                <div class="card col-md-4 m-2 p-0 border-0 cardCredit">
+                <div class="card col-sm-12 col-md-4 m-2 p-0 border-0 cardCredit">
                     <img src="img/credits/{{ categorie.imageName }}" class="card-img-top" alt="{{ categorie.imageName }}">
                     <div class="card-body">
                         <a href="{{ path('category_show', {id: categorie.id}) }}" class="nav-link"><h5 class="text-success linkCat text-center">{{ categorie.titre }}</h5></a>

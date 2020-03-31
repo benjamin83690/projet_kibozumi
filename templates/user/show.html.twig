@@ -3,52 +3,72 @@
 {% block title %}User
 {% endblock %}
 
+{% block stylesheets %}
+    <style>
+        .contactSection {
+            margin-top: 0 !important;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
-    <h1>User</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ user.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ user.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ user.telephone }}</td>
-            </tr>
-        </tbody>
-    </table>
-    {% for commande in commandes %}
-        {# {% if credit.tauxFixe == commande. %}
-        <p>{{ credit.tauxFixe }}</p> #}
-        <p>{{ commande.creditCommande.tauxFixe }}</p>
-    {% endfor %}
+    <div class="container-fluid mt-7 p-0">
+        <div class="separator primary p-4">
+            {% if is_granted('ROLE_ADMIN') %}
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active btn btn-success rounded-pill shadow" href="{{ path('credit_index') }}">Crédits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-success rounded-pill shadow mx-2" href="{{ path('category_index') }}">Catgeorie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-success rounded-pill shadow" href="{{ path('user_index') }}">Utilisateurs</a>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+        <div class="row dark w-100 m-0">
+            <div class="p-4 col-md-6">
+                <h1 class="display-3">Tableau De Bord</h1>
+                <div class="box-profil primary mt-6 shadow ml-md-4 ml-sm-0">
+                    <p class="ml-5">
+                        <strong>profil :</strong> <br><br>
+                        <strong>Prenom :</strong> {{ user.prenom }} <br><br>
+                        <strong>nom:</strong> {{ user.nom }}<br><br>
+                        <strong>telephone:</strong> {{ user.telephone }}<br><br>
+                        <strong>email:</strong> {{ user.email }}<br>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 p-3 text-center">
+                <img src="{{ asset('images/kibozumi3.png') }}" alt="logo kibozumi" class="img-profil">
+            </div>
+        </div>
 
-    <a href="{{ path('user_index') }}">back to list</a>
+        <div class="separator primary p-4"></div>
 
-    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-
-			{{ include('user/_delete_form.html.twig') }}
-		</div>
-	</div>
+        <div class="success p-3">
+            <h1 class="display-3">Mes Prêts</h1>
+            <div class="row w-100 m-0">
+            {% for commande in commandes %}
+                    <div class="dossier shadow p-3 col-md-4">
+                        <h3>Mon dossier n°{{loop.index}} : </h3>
+                        <p>
+                            <strong>prêt</strong> : {{ commande.creditCommande.creditCategory.titre }}<br>
+                            <strong>date</strong> : {{commande.dateCommande | date("d-m-Y") }} <br>
+                            <strong>montant emprunté </strong>: {{commande.montantEmprunte}}<br>
+                            <strong>mensualités</strong> : {{commande.mensualites}}<br>
+                            <strong>taux</strong> : {{ commande.creditCommande.tauxFixe }}<br>
+                        </p>
+                    </div>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="separator primary p-4"></div>
+        <hr>
+        {% include "home/indexTemp/contact.html.twig" %}
+        <hr>
+    </div>
 {% endblock %}
