@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/credit")
+ * @Route("/admin/credit")
  */
 class CreditController extends AbstractController
 {

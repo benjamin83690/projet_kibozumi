@@ -3,36 +3,35 @@
 {% block title %}Credit index{% endblock %}
 
 {% block body %}
-    <h1>Credit index</h1>
 
-    <table class="table">
-        <thead>
+    <h1>Liste des crédits</h1>
+
+    <table class="table mt-7">
+        <thead class="success">
             <tr>
-                <th>Id</th>
-                <th>Categorie</th>
-                <th>Mensualites</th>
-                <th>NombresMensualites</th>
-                <th>MontantEmprunte</th>
-                <th>TauxFixe</th>
-                <th>MontantTotal</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
+                <th class="border">Mensualites</th>
+                <th class="border">Nombres de mensualites</th>
+                <th class="border">Categorie</th>
+                <th class="border">Montant emprunté</th>
+                <th class="border">Taux </th>
+                <th class="border">Montant total</th>
+                <th class="border">Date de création</th>
+                <th class="border"></th>
             </tr>
         </thead>
         <tbody>
         {% for credit in credits %}
             <tr>
-                <td>{{ credit.id }}</td>
                 <td>{{ credit.creditCategory.titre }}</td>
-                <td>{{ credit.mensualites }}</td>
-                <td>{{ credit.nombresMensualites }}</td>
-                <td>{{ credit.montantEmprunte }}</td>
-                <td>{{ credit.tauxFixe }}</td>
-                <td>{{ credit.montantTotal }}</td>
+                <td>{{ credit.mensualites }}€</td>
+                <td>{{ credit.nombresMensualites }} mois</td>
+                <td>{{ credit.montantEmprunte }}€</td>
+                <td>{{ credit.tauxFixe }}%</td>
+                <td>{{ credit.montantTotal }}€</td>
                 <td>{{ credit.updatedAt ? credit.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('credit_show', {'id': credit.id}) }}">show</a>
-                    <a href="{{ path('credit_edit', {'id': credit.id}) }}">edit</a>
+                    <button class="btn btn-primary" href="{{ path('credit_show', {'id': credit.id}) }}">Voir</button>
+                    <button class="btn btn-secondary"  href="{{ path('credit_edit', {'id': credit.id}) }}">Modifier</button>
                 </td>
             </tr>
         {% else %}
@@ -43,5 +42,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('credit_new') }}">Create new</a>
+    <button class="btn btn-success" href="{{ path('credit_new') }}">Créer un nouveau crédit</button>
 {% endblock %}
