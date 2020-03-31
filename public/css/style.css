@@ -38,6 +38,10 @@
     margin-top: 4rem;
 }
 
+.mt-7 {
+    margin-top: 145px;
+}
+
 /* ---------------------------------- */
 
 .mb-6 {
@@ -395,17 +399,6 @@ footer {
     top: 140px;
 }
 
-@media screen and (max-width: 768px) {
-    .wrap-cred {
-        position: static;
-        height: 55vh;
-    }
-
-    .cardCredit3 {
-        display: none;
-    }
-}
-
 .cardCredit2 {
     height: 24vh;
     display: flex;
@@ -485,4 +478,55 @@ footer {
     left: 0;
     top: 125px;
     padding-left: 350px;
+}
+
+@media screen and (max-width: 768px) {
+    .wrap-cred {
+        position: static;
+        height: 55vh;
+    }
+
+    .cardCredit3 {
+        display: none;
+    }
+
+    .box-contact {
+        display: none;
+    }
+
+    .jcse {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .cardCredit {
+        max-width: 80%;
+    }
+    .rowProjet {
+        justify-content: center !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .contactSection {
+        height: 300px;
+    }
+
+    .btn-contact {
+        margin: 10px 0 !important;
+    }
+}
+
+.box-profil {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-profil {
+    max-width: 500px;
+    height: auto;
 }

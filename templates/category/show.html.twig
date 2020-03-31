@@ -133,7 +133,8 @@
                     </ol>
                     <div class="carousel-inner">
                         {% for credit in credits %}
-                            <div class="wrapUp-table border carousel-item {% if loop.index == 1 %} active {% endif %}">
+                            <div class="border carousel-item {% if loop.index == 1 %} active {% endif %}">
+                                <p class="text-center m-0 text-light bg-primary">Formule n°{{ loop.index }}</p>
                                 <div class="row d-flex justify-content-center border p-2">
                                     {% if is_granted('ROLE_USER') %}
                                         <a class="btn btn-color rounded-pill data" href="{{ path('user_show', {id: app.user.id}) }}" id="{{credit.id}}">Choisir</a>
@@ -142,14 +143,14 @@
                                     {% endif %}
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12 text-center cel border-right montantEmprunte2 active{{ loop.index }}">
+                                    <div class="col-md-12 text-center cel bg-white border-right montantEmprunte2 active{{ loop.index }}">
                                         <p>Montant emprunté</p>
                                         {{ credit.montantEmprunte }} <sup>€</sup>
                                     </div>
                                 </div>
 
                                 <div class="row border-top">
-                                    <div class="col-md-12 text-center cel border-right active{{ loop.index }}">
+                                    <div class="col-md-12 text-center cel bg-white border-right active{{ loop.index }}">
                                         <p>Mensualités</p>
                                         <small class="text-muted">à partir de</small> <br>
                                         <p class="mensualites2" id="mensualites2{{credit.id}}">{{ credit.mensualites }}</p>
@@ -158,14 +159,14 @@
                                 </div>
 
                                 <div class="row border-top">
-                                    <div class="col-md-12 text-center cel border-right nbrMensualites2 active{{ loop.index }}">
+                                    <div class="col-md-12 text-center cel bg-white border-right active{{ loop.index }}">
                                         <p>Durée du crédit</p>
-                                        {{ credit.nombresMensualites }} mois
+                                        <p class="nbrMensualites2">{{ credit.nombresMensualites }}</p>
                                     </div>
                                 </div>
 
                                 <div class="row border-top">
-                                    <div class="col-md-12 text-center cel border-right active{{ loop.index }}">
+                                    <div class="col-md-12 text-center cel bg-white border-right active{{ loop.index }}">
                                         <p>Taux Fixe</p>
                                         <p class="taux2">{{ credit.tauxFixe }}</p>
                                     </div>
@@ -242,52 +243,14 @@
                 
             });
         {% endif %}
-
-        $('#tarif').on('input', function() {                        
-            for (let i = 0; i < $('.montantTotal').length; i++) {
-                const montant = parseInt($(this).val())
-                const taux = parseFloat($('.taux')[i].innerHTML);
-                const nbrMensualites = parseInt($('.nbrMensualites')[i].innerHTML);
-                const total = ((montant * taux) / 100) + montant;
-                const mensualites = total / nbrMensualites;
-                
-
-                $('.mensualites')[i].innerHTML = arrondir(mensualites);
-                $('.montantTotal')[i].innerHTML = total;
-                $('.montantEmprunte')[i].innerHTML = montant;
-
-                $('.resultBox').html(arrondir(mensualites) + "<sup>€</sup> / mois");
-                $('.dure').html(nbrMensualites + " mois");
-                $('#montant').attr('value', $(this).val());                    
-            }
-
-            for (let i = 0; i < $('.montantTotal2').length; i++) {
-                const montant2 = parseInt($(this).val())
-                const taux2 = parseFloat($('.taux2')[i].innerHTML);
-                const nbrMensualites2 = parseInt($('.nbrMensualites2')[i].innerHTML);
-                const total2 = ((montant2 * taux2) / 100) + montant2;
-                const mensualites2 = total2 / nbrMensualites2;
-                
-
-                $('.mensualites2')[i].html(arrondir(mensualites2));
-                $('.montantTotal2')[i].html(total2);
-                $('.montantEmprunte2')[i].html(montant2);
-                
-
-                $('.resultBox').text(arrondir(mensualites2));
-                $('.dure').text(nbrMensualites2 + " mois");
-                $('#montant').attr('value', $(this).val());                    
-            }
-        })
-
         {% if is_granted('ROLE_USER') %}
             $('.data2').click((e) => { 
                     
                 $.ajax({
                     data: {
-                        montant: $('#montant2').val(),
-                        mensualites : $('#mensualites' + e.target.getAttribute('id'))[0].innerHTML,
-                        montantTotal: $('#montantTotal2'+ e.target.getAttribute('id'))[0].innerHTML,
+                        montant2: $('#montant').val(),
+                        mensualites2 : $('#mensualites' + e.target.getAttribute('id'))[0].innerHTML,
+                        montantTotal2: $('#montantTotal2'+ e.target.getAttribute('id'))[0].innerHTML,
                         creditId: e.target.getAttribute('id')
                     },
                     url: "{{path('ajax', {user: app.user.id})}}",
@@ -304,6 +267,50 @@
                 
             });
         {% endif %}
+
+        $('#tarif').on('input', function() {                        
+            for (let i = 0; i < $('.montantTotal').length; i++) {                
+                const montant = parseInt($(this).val())
+                const taux = parseFloat($('.taux')[i].innerHTML);
+                const nbrMensualites = parseInt($('.nbrMensualites')[i].innerHTML);
+                const total = ((montant * taux) / 100) + montant;
+                const mensualites = total / nbrMensualites;
+                
+
+                $('.mensualites')[i].innerHTML = arrondir(mensualites);
+                $('.montantTotal')[i].innerHTML = total;
+                $('.montantEmprunte')[i].innerHTML = montant;
+
+                $('.resultBox').html(arrondir(mensualites) + "<sup>€</sup> / mois");
+                $('.dure').html(nbrMensualites + " mois");
+                $('#montant').attr('value', $(this).val());                    
+            }
+
+            for (let j = 0; j < $('.carousel-item').length; j++) {
+                // console.log($('.carousel-item')[j]);
+                
+                
+                const montant2 = parseInt($(this).val())
+                const taux2 = parseFloat($('.taux2')[j].innerHTML);
+                const nbrMensualites2 = parseInt($('.nbrMensualites2')[j].innerHTML);
+                const total2 = ((montant2 * taux2) / 100) + montant2;
+                const mensualites2 = total2 / nbrMensualites2;
+                // console.log(taux2);
+                // console.log(nbrMensualites2);
+                // console.log(total2);
+                // console.log(mensualites2);
+                
+
+                $('.mensualites2')[j].innerHTML = arrondir(mensualites2);
+                $('.montantTotal2')[j].innerHTML = total2;
+                $('.montantEmprunte2')[j].innerHTML = montant2;
+                
+
+                $('.resultBox').text(arrondir(mensualites2));
+                $('.dure').text(nbrMensualites2 + " mois");
+                $('#montant').attr('value', $(this).val());                    
+            }
+        })
 
         // $('#tarif').on('input', function() {            
         //     console.log("coucou");
