@@ -17,15 +17,15 @@
 			</div>
 		{% endif %}
 		<div class="container">
-			<div class="row">
-				<div class="jumbotron col-md-8 m-auto shadow">
+			<div class="row justify-content-around">
+				<div class="jumbotron col-md-6  shadow">
 					<h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
 					<div class="card flex-row justify-content-around p-4">
 						<div class="form-group col-md-8">
 							<label for="inputEmail">Email</label>
-							<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+							<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"  autofocus>
 							<label for="inputPassword">Mot de passe</label>
-							<input type="password" name="password" id="inputPassword" class="form-control" required>
+							<input type="password" name="password" id="inputPassword" class="form-control" >
 
 							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 							<button class="btn btn-success mt-3" type="submit">
@@ -34,7 +34,17 @@
 						</div>
 					</div>
 				</div>
+			
+				<div class="jumbotron col-md-4 shadow">
+						<h4 class="text-center">Créer un compte</h4>
+						<div class="card justify-content-center align-items-center text-center">
+							<p>Pas encore de compte inscrivez-vous:</p>
+							<a class="btn btn-success mt-3" href="{{ path('user_new') }}" class="nav-link btn btn-primary">inscription</a>
+						</div>
+				</div>
+			
 			</div>
+			
 		</div>
 
 		{#
