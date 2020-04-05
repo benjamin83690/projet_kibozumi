@@ -3,45 +3,46 @@
 {% block title %}Credit index{% endblock %}
 
 {% block body %}
-    <h1>Credit index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Categorie</th>
-                <th>Mensualites</th>
-                <th>NombresMensualites</th>
-                <th>MontantEmprunte</th>
-                <th>TauxFixe</th>
-                <th>MontantTotal</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for credit in credits %}
-            <tr>
-                <td>{{ credit.id }}</td>
-                <td>{{ credit.creditCategory.titre }}</td>
-                <td>{{ credit.mensualites }}</td>
-                <td>{{ credit.nombresMensualites }}</td>
-                <td>{{ credit.montantEmprunte }}</td>
-                <td>{{ credit.tauxFixe }}</td>
-                <td>{{ credit.montantTotal }}</td>
-                <td>{{ credit.updatedAt ? credit.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('credit_show', {'id': credit.id}) }}">show</a>
-                    <a href="{{ path('credit_edit', {'id': credit.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <h1>Liste des crédits</h1>
 
-    <a href="{{ path('credit_new') }}">Create new</a>
+    <div class="container">
+        <table class="table mt-7 table-hover table-responsive">
+            <thead class="success">
+                <tr>
+                    <th class="border">Mensualites</th>
+                    <th class="border">Nombres de mensualites</th>
+                    <th class="border">Categorie</th>
+                    <th class="border">Montant emprunté</th>
+                    <th class="border">Taux </th>
+                    <th class="border">Montant total</th>
+                    <th class="border">Date de création</th>
+                    <th class="border"></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for credit in credits %}
+                <tr>
+                    <td>{{ credit.creditCategory.titre }}</td>
+                    <td>{{ credit.mensualites }}€</td>
+                    <td>{{ credit.nombresMensualites }} mois</td>
+                    <td>{{ credit.montantEmprunte }}€</td>
+                    <td>{{ credit.tauxFixe }}%</td>
+                    <td>{{ credit.montantTotal }}€</td>
+                    <td>{{ credit.updatedAt ? credit.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+                        <a class="btn btn-success" href="{{ path('credit_show', {'id': credit.id}) }}">Voir</a>
+                        <a class="btn primary"  href="{{ path('credit_edit', {'id': credit.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a class="btn btn-success" href="{{ path('credit_new') }}">Créer un nouveau crédit</a>
+    </div>
+
 {% endblock %}

@@ -12,8 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/credit")
- */
+* @Route("/admin/credit")
+*/
 class CreditController extends AbstractController
 {
     /**
@@ -27,8 +27,8 @@ class CreditController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="credit_new", methods={"GET","POST"})
-     */
+    * @Route("/new", name="credit_new", methods={"GET","POST"})
+    */
     public function new(Request $request): Response
     {
         $credit = new Credit();
@@ -50,8 +50,8 @@ class CreditController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="credit_show", methods={"GET"})
-     */
+    * @Route("/{id}", name="credit_show", methods={"GET"})
+    */
     public function show(Credit $credit): Response
     {
         return $this->render('credit/show.html.twig', [
@@ -60,8 +60,8 @@ class CreditController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="credit_edit", methods={"GET","POST"})
-     */
+    * @Route("/{id}/edit", name="credit_edit", methods={"GET","POST"})
+    */
     public function edit(Request $request, Credit $credit): Response
     {
         $form = $this->createForm(CreditType::class, $credit);
@@ -80,8 +80,8 @@ class CreditController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="credit_delete", methods={"DELETE"})
-     */
+    * @Route("/{id}", name="credit_delete", methods={"DELETE"})
+    */
     public function delete(Request $request, Credit $credit): Response
     {
         if ($this->isCsrfTokenValid('delete'.$credit->getId(), $request->request->get('_token'))) {

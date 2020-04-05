@@ -5,45 +5,62 @@
 {% block body %}
     <h1>Credit</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ credit.id }}</td>
-            </tr>
-            <tr>
-                <th>Mensualites</th>
-                <td>{{ credit.mensualites }}</td>
-            </tr>
-            <tr>
-                <th>NombresMensualites</th>
-                <td>{{ credit.nombresMensualites }}</td>
-            </tr>
-            <tr>
-                <th>MontantEmprunte</th>
-                <td>{{ credit.montantEmprunte }}</td>
-            </tr>
-            <tr>
-                <th>TauxFixe</th>
-                <td>{{ credit.tauxFixe }}</td>
-            </tr>
-            <tr>
-                <th>MontantTotal</th>
-                <td>{{ credit.montantTotal }}</td>
-            </tr>
-            <tr>
-                <th>ImageName</th>
-                <td>{{ credit.imageName }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ credit.updatedAt ? credit.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="{{ path('credit_index') }}">back to list</a>
+    <div class="container mt-7">
 
-    <a href="{{ path('credit_edit', {'id': credit.id}) }}">edit</a>
+       <div class="row">
+            <div class="col-md-10 m-auto">
+                <table class="table table-hover table-responsive">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="border success text-center">Credit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="border primary" width="200">Id</th>
+                            <td class="border" width="500">{{ credit.creditCategory.id }}</td>
+                        </tr>
+                        <tr>
+                            <th class="border primary">Mensualites</th>
+                            <td class="border">{{ credit.creditCategory.titre }}</td>
+                        </tr>
+                        <tr>
+                            <th class="border primary">Nombres De Mensualites</th>
+                            <td class="border">{{ credit.mensualites }}€</td>
+                        </tr>
+                        <tr>
+                            <th class="border primary">Montant Emprunte</th>
+                            <td class="border">{{ credit.nombresMensualites }} mois</td>
+                        </tr>
+                        <tr>
+                            <th class="border primary">Taux Fixe</th>
+                            <td class="border">{{ credit.montantEmprunte }}€</td>
+                        </tr>
+                        <tr>
+                            <th class="border primary">Montant total</th>
+                            <td class="border">{{ credit.tauxFixe }}%</td>
+                        </tr>
+                        <tr>
+                            <th class="border primary">Date de création</th>
+                            <td class="border">{{ credit.montantTotal }}€</td>
+                        </tr>
+                        <tr>
+                            <th class="border primary">Date</th>
+                            <td class="border">{{ credit.updatedAt ? credit.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th class="border primary">Action</th>
+                            <td class="border">
+                                <a class="btn primary"  href="{{ path('credit_edit', {'id': credit.id}) }}">Modifier</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="{{ path('credit_index') }}" class="btn success rounded-pill">Retour</a>
+                {{ include('credit/_delete_form.html.twig') }}
+            </div>
+       </div>
 
-    {{ include('credit/_delete_form.html.twig') }}
+    </div>
+
 {% endblock %}

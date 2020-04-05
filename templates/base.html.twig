@@ -18,7 +18,7 @@
                 <hr class="mt-1">
             </div>
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ url('home') }}">
                     <img src="{{ asset('images/kibozumi.png') }}" alt="logo" class="img-fluid" width="150">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,32 +34,29 @@
                             <a class="nav-link text-success" href="{{ url('home_contact') }}">Nous contacter</a>
                         </li>
                         {{ render(controller('App\\Controller\\HomeController::menu')) }}
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <li class="nav-item">
-                                <a href="{{ path('admin_new') }}" class="nav-link btn btn-success">inscrire un admin</a>
-                            </li>
-                        {% endif %}
-                        {% if is_granted('ROLE_USER') %}
+                    </ul>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="{{ path('app_logout') }}" class="nav-link btn btn-primary">Deconnexion</a>
+                            <a href="{{ path('admin_new') }}" class="nav-link btn btn-success">inscrire un admin</a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_USER') %}
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="{{ path('app_logout') }}" class="nav-link btn btn-primary mx-2">Deconnexion</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('user_show', {id: app.user.id }) }}" class="nav-link btn btn-primary">Profil</a>
                         </li>
-                        {% else %}
+                    {% else %}
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a href="{{ path('app_login') }}" class="nav-link btn btn-success rounded-pill">Mon espace <i class="far fa-user pl-1"></i></a>
                         </li>
                     </ul>
-                        {# <li class="nav-item">
-                            <a href="{{ path('app_login') }}" class="nav-link btn btn-info">connexion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ path('user_new') }}" class="nav-link btn btn-primary">inscription</a>
-                        </li> #}
-                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
         </nav>
